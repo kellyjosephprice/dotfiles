@@ -11,6 +11,7 @@ defutf8 on
 nonblock on
 
 hardstatus alwayslastline
-hardstatus string '%{= kw}[ %{= kb}%H%{= kw} ][%= %{= kw}%?%-Lw%?%{= kW}%n*%f %t%?%?%{= kw}%?%+Lw%?%?%= ][ %{r}%l%{w} ]%{w}[%{r} %d/%m/%y %C %A %{w}]%{w}'
+#hardstatus string "%{- W}}[%{- B}%H%{- W}][%{- B}%n %t%{- W}][%=%{- B}%W%=%{- W}][%{- B}%c%{- W}]"
+hardstatus string '%{= kw}[ %{b}%H %{w}][%= %{= kb}%?%-Lw%?%{+ b}(%{W}%n*%f%t%?(%u)%?%{+ b})%{w}%?%+Lw%?%?%= %{w}][%{b} %m-%d %{b}%c %{w}]'
 
 bind 'q' quit
