@@ -1,0 +1,17 @@
+# C-a :source .screenrc
+
+termcapinfo xterm* ti@:te@
+startup_message off
+vbell off
+autodetach on
+altscreen on
+shelltitle "$ |bash"
+defscrollback 10000
+defutf8 on
+nonblock on
+
+hardstatus alwayslastline
+#hardstatus string "%{- W}}[%{- B}%H%{- W}][%{- B}%n %t%{- W}][%=%{- B}%W%=%{- W}][%{- B}%c%{- W}]"
+hardstatus string '%{= kw}[ %{b}%H %{w}][%= %{= kb}%?%Lw%?%{+ b}(%{W}%n%f%t%?(%u)%?%{+ b})%{w}%?%Lw%?%?%= %{w}][%{b} %m-%d %{b}%c %{w}]'
+
+bind 'q' quit
