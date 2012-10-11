@@ -88,4 +88,4 @@ fi
 [[ -f ${HOME}/.bashrc.local ]] && source ${HOME}/.bashrc.local
 
 # execute screen
-[[ "$STY" = "" && `which screen` ]] && exec screen -R 
+[ "$STY" = "" && `which screen` ] && exec screen -R 
