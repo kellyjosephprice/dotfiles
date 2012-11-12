@@ -86,6 +86,3 @@ fi
 
 # load .bashrc.local
 [[ -f ${HOME}/.bashrc.local ]] && source ${HOME}/.bashrc.local
-
-# execute screen
-[[ "$STY" = "" && `which screen` ]] && exec screen -R 
