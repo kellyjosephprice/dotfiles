@@ -75,7 +75,8 @@ bash_prompt_cmd() {
 PROMPT_COMMAND=bash_prompt_cmd
 
 if [ -n "$SSH_CLIENT" ]; then
-    PS1="\[$txtgrn\]\A\[$txtwht\] \[$bldblu\]\${newPWD} \[$txtylw\]ssh \$ \[$txtrst\]"
+    HOST_SHORT=`echo $HOSTNAME | cut -c1-4`
+    PS1="\[$txtgrn\]\A\[$txtwht\] \[$bldblu\]\${newPWD} \[$txtylw\]$HOST_SHORT \$ \[$txtrst\]"
 else 
     if [ `id -u` != "0" ]; then
         PS1="\[$txtgrn\]\A\[$txtwht\] \[$bldblu\]\${newPWD} \[$txtylw\]\$ \[$txtrst\]"
