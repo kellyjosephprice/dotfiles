@@ -4,7 +4,7 @@
 # Check for an interactive session
 [ -z "$PS1" ] && return
 
-PATH=$PATH:.:${HOME}/bin/:
+PATH=$PATH:.:${HOME}/bin/
 export PATH
 
 export HISTSIZE=1000
@@ -57,6 +57,17 @@ bakpur='\e[45m'   # Purple
 bakcyn='\e[46m'   # Cyan
 bakwht='\e[47m'   # White
 txtrst='\e[0m'    # Text Reset
+
+say() { 
+    if [[ "${1}" =~ -[a-z]{2} ]]; then 
+        local lang=${1#-}; 
+        local text="${*#$1}"; 
+    else 
+        local lang=${LANG%_*}; 
+        local text="$*";
+    fi; 
+    mplayer "http://translate.google.com/translate_tts?ie=UTF-8&tl=${lang}&q=${text}" &> /dev/null ; 
+}
 
 bash_prompt_cmd() {
     #   How many characters of the $PWD should be kept

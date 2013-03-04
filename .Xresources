@@ -10,7 +10,7 @@ Xft*rgba:               rgb
 xft*hinting:            1
 xft*hintstyle:          hintfull
 xft*lcdfilter:          lcddefault
-xft*autohint:           1
+xft*autohint:           0
 
 ! rxvt-unicode Settings -----------------------------------------------------
 urxvt*depth:            24
@@ -34,7 +34,10 @@ XTerm*highlightSelection: true
 XTerm*scrollBar:	    false
 XTerm*visualbell:	    true
 XTerm*cursorBlink:	    true
-XTerm*faceName:		    Inconsolata:pixelsize=11
+!XTerm*faceName:		    DejaVuSansMono:pixelsize=9
+XTerm*faceName:		    Inconsolata:pixelsize=10
+!XTerm*faceName:		    Monaco:pixelsize=10
+!XTerm*faceName:		    Mensch:pixelsize=9
 XTerm*VT100.translations: #override <Btn1Up>: select-end(PRIMARY, CLIPBOARD, CUT_BUFFER0)
 
 !xscreensaver ------------------------------------------------------------------
@@ -49,21 +52,21 @@ xscreensaver.Dialog.dateFont:           Inconsolata:pixelsize=10
 xscreensaver.passwd.passwdFont:         Inconsolata:pixelsize=10
 
 !general dialog box (affects main hostname, username, password text)
-xscreensaver.Dialog.foreground:         #93d44f
-xscreensaver.Dialog.background:         #000000
-xscreensaver.Dialog.topShadowColor:     #000000
-xscreensaver.Dialog.bottomShadowColor:  #000000
-xscreensaver.Dialog.Button.foreground:  #836e50
-xscreensaver.Dialog.Button.background:  #29241d
+!xscreensaver.Dialog.foreground:         #93d44f
+!xscreensaver.Dialog.background:         #000000
+!xscreensaver.Dialog.topShadowColor:     #000000
+!xscreensaver.Dialog.bottomShadowColor:  #000000
+!xscreensaver.Dialog.Button.foreground:  #836e50
+!xscreensaver.Dialog.Button.background:  #29241d
 !username/password input box and date text colour
-xscreensaver.Dialog.text.foreground:    #ffeebd
-xscreensaver.Dialog.text.background:    #29241d
+!xscreensaver.Dialog.text.foreground:    #ffeebd
+!xscreensaver.Dialog.text.background:    #29241d
 xscreensaver.Dialog.internalBorderWidth:0
 xscreensaver.Dialog.borderWidth:        0
 xscreensaver.Dialog.shadowThickness:    2
 !timeout bar (background is actually determined by Dialog.text.background)
-xscreensaver.passwd.thermometer.foreground:  #ff8d8d
-xscreensaver.passwd.thermometer.background:  #000000
+!xscreensaver.passwd.thermometer.foreground:  #ff8d8d
+!xscreensaver.passwd.thermometer.background:  #000000
 xscreensaver.passwd.thermometer.width:       6
 !datestamp format--see the strftime(3) manual page for details
 xscreensaver.dateFormat:    %I:%M%P %a %b %d, %Y
@@ -88,26 +91,26 @@ xscreensaver.dateFormat:    %I:%M%P %a %b %d, %Y
 
 ! Dark
 
-! #define S_base03        #002b36
-! #define S_base02        #073642
-! #define S_base01        #586e75
-! #define S_base00        #657b83
-! #define S_base0         #839496
-! #define S_base1         #93a1a1
-! #define S_base2         #eee8d5
-! #define S_base3         #fdf6e3
+#define S_base03        #002b36
+#define S_base02        #073642
+#define S_base01        #586e75
+#define S_base00        #657b83
+#define S_base0         #839496
+#define S_base1         #93a1a1
+#define S_base2         #eee8d5
+#define S_base3         #fdf6e3
 
 
 ! Light
 
-#define S_base03        #fdf6e3
-#define S_base02        #eee8d5
-#define S_base01        #93a1a1
-#define S_base00        #839496
-#define S_base0         #657b83
-#define S_base1         #586e75
-#define S_base2         #073642
-#define S_base3         #002b36
+! #define S_base03        #fdf6e3
+! #define S_base02        #eee8d5
+! #define S_base01        #93a1a1
+! #define S_base00        #839496
+! #define S_base0         #657b83
+! #define S_base1         #586e75
+! #define S_base2         #073642
+! #define S_base3         #002b36
 
 
 ! To only apply colors to your terminal, for example, prefix

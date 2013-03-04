@@ -38,10 +38,6 @@ set so=3            " scrolloff
 set textwidth=78    " wraps text
 set number          " display line number
 
-" command completion
-set wildmenu
-" set wildmode=list:longest,full
-
 " auto-complte menu
 set completeopt=longest,menuone	" auto-completion magic
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
@@ -50,6 +46,32 @@ inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
 inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
   \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
+" perly stuff
+autocmd FileType perl set makeprg=perl\ -c\ %\ $*
+autocmd FileType perl set errorformat=%f:%l:%m
+autocmd FileType perl set autowrite
+
+" my perl includes pod
+let perl_include_pod = 1
+
+" syntax color complex things like @{${"foo"}}
+let perl_extended_vars = 1
+
+"define :Tidy command to run perltidy on visual selection || entire buffer"
+command -range=% -nargs=* Tidy <line1>,<line2>!perltidy
+
+"run :Tidy on entire buffer and return cursor to (approximate) original position"
+fun DoTidy()
+    let Pos = line2byte( line( "." ) ) 
+    :Tidy
+    exe "goto " . Pos 
+endfun
+
+"shortcut for normal mode to run on entire buffer then return to current line"
+au Filetype perl nmap <F2> :call DoTidy()<CR>
+
+"shortcut for visual mode to run on the the current visual selection"
+au Filetype perl vmap <F2> :Tidy<CR>
 
 " dvorak remap
 "noremap h h
