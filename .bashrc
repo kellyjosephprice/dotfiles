@@ -86,7 +86,7 @@ bash_prompt_cmd() {
 PROMPT_COMMAND=bash_prompt_cmd
 
 if [ -n "$SSH_CLIENT" ]; then
-    HOST_SHORT=`echo $HOSTNAME | cut -c1-4`
+    HOST_SHORT=`echo $HOSTNAME | cut -c1-5`
     PS1="\[$txtgrn\]\A\[$txtwht\] \[$bldblu\]\${newPWD} \[$txtylw\]$HOST_SHORT \$ \[$txtrst\]"
 else 
     if [ `id -u` != "0" ]; then
@@ -95,6 +95,18 @@ else
         PS1="\[$txtgrn\]\A\[$txtwht\] \[$bldblu\]\${newPWD} \[$txtred\]\$ \[$txtrst\]"
     fi
 fi
+
+case $TERM in 
+    screen*)
+        HOST_SHORT=`echo $HOSTNAME | cut -c1-5`
+        SCREENTITLE='\033${HOST_SHORT}\033\\'
+        ;;
+    *)
+        SCREENTITLE=''
+        ;;
+esac
+
+PS1=${SCREENTITLE}${PS1}
 
 # load .bashrc.local
 [[ -f ${HOME}/.bashrc.local ]] && source ${HOME}/.bashrc.local
