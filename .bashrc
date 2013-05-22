@@ -69,19 +69,23 @@ say() {
     mplayer "http://translate.google.com/translate_tts?ie=UTF-8&tl=${lang}&q=${text}" &> /dev/null ; 
 }
 
-bash_prompt_cmd() {
-    #   How many characters of the $PWD should be kept
-    local pwdmaxlen=18
-    #   Indicator that there has been directory truncation:
-    #trunc_symbol="<"
-    local trunc_symbol="<"
+trunc_pwd() {
+    local pwdmaxlen=$1
+    local trunc_symbol=$2
+
     if [ ${#PWD} -gt $pwdmaxlen ]
         then
             local pwdoffset=$(( ${#PWD} - $pwdmaxlen ))
-            newPWD="${trunc_symbol}${PWD:$pwdoffset:$pwdmaxlen}"
+            echo "${trunc_symbol}${PWD:$pwdoffset:$pwdmaxlen}"
         else
-            newPWD=${PWD}
+            echo ${PWD}
     fi
+}
+
+bash_prompt_cmd() {
+    local pwdmaxlen=18
+    local trunc_symbol="<"
+    newPWD=$(trunc_pwd $pwdmaxlen $trunc_symbol )
 }
 PROMPT_COMMAND=bash_prompt_cmd
 
@@ -98,7 +102,8 @@ fi
 
 case $TERM in 
     screen*)
-        HOST_SHORT=`echo $HOSTNAME | cut -c1-5`
+        HOST_SHORT=`echo $HOSTNAME | cut -c1-2`
+        HOST_SHORT="${HOST_SHORT} $(trunc_pwd 13 '<')"
         SCREENTITLE='\033k${HOST_SHORT}\033\\'
         ;;
     *)
