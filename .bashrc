@@ -99,7 +99,7 @@ fi
 case $TERM in 
     screen*)
         HOST_SHORT=`echo $HOSTNAME | cut -c1-5`
-        SCREENTITLE='\033${HOST_SHORT}\033\\'
+        SCREENTITLE='\033k${HOST_SHORT}\033\\'
         ;;
     *)
         SCREENTITLE=''
