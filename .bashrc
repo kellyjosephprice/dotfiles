@@ -102,8 +102,7 @@ fi
 
 case $TERM in 
     screen*)
-        HOST_SHORT=`echo $HOSTNAME | cut -c1-2`
-        HOST_SHORT="${HOST_SHORT} $(trunc_pwd 13 '<')"
+        HOST_SHORT=`echo $HOSTNAME | cut -c1-6`
         SCREENTITLE='\033k${HOST_SHORT}\033\\'
         ;;
     *)
