@@ -15,7 +15,7 @@ xft*autohint:           0
 ! rxvt-unicode Settings -----------------------------------------------------
 urxvt*depth:            24
 urxvt*font:             xft:Inconsolata:pixelsize=13
-!urxvt*font:             xft:DejaVuSansMono:pixelsize=11
+!urxvt*font:             xft:DejaVuSansMono:pixelsize=10
 !urxvt*letterspace:      -1
 urxvt*fading:           10
 urxvt*visualBell:       false
@@ -36,8 +36,8 @@ XTerm*highlightSelection: true
 XTerm*scrollBar:	    false
 XTerm*visualbell:	    true
 XTerm*cursorBlink:	    true
-!XTerm*faceName:		    DejaVuSansMono:pixelsize=9
-XTerm*faceName:		    Inconsolata:pixelsize=10
+!XTerm*faceName:		    DejaVuSansMono:pixelsize=10
+XTerm*faceName:		    Inconsolata:pixelsize=11
 !XTerm*faceName:		    Monaco:pixelsize=10
 !XTerm*faceName:		    Mensch:pixelsize=9
 XTerm*VT100.translations: #override <Btn1Up>: select-end(PRIMARY, CLIPBOARD, CUT_BUFFER0)
