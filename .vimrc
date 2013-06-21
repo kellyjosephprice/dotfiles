@@ -38,6 +38,8 @@ set so=3            " scrolloff
 set textwidth=78    " wraps text
 set number          " display line number
 
+set splitright
+
 " auto-complte menu
 set completeopt=longest,menuone	" auto-completion magic
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
@@ -72,6 +74,13 @@ au Filetype perl nmap <F2> :call DoTidy()<CR>
 
 "shortcut for visual mode to run on the the current visual selection"
 au Filetype perl vmap <F2> :Tidy<CR>
+
+" Too much/too little magic
+"inoremap ( ()<left>
+"inoremap { {}<left>
+"inoremap [ []<left>
+"inoremap ' ''<left>
+"inoremap " ""<left>
 
 " dvorak remap
 "noremap h h

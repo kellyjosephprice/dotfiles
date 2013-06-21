@@ -22,8 +22,6 @@ alias sudo="sudo "
 alias xcalc="xcalc -stipple"
 alias grep="grep --color=always"
 
-[[ `grep 'Arch Linux' /etc/issue` ]] && alias pacman="pacman-color"
-
 txtblk='\e[0;30m' # Black - Regular
 txtred='\e[0;31m' # Red
 txtgrn='\e[0;32m' # Green
