@@ -16,7 +16,6 @@ xft*autohint:           0
 urxvt*depth:            24
 urxvt*font:             xft:Inconsolata:pixelsize=12
 !urxvt*font:             xft:DejaVuSansMono:pixelsize=10
-!urxvt*letterspace:      -1
 urxvt*fading:           10
 urxvt*visualBell:       false
 urxvt*scrollTtyKeypress:true

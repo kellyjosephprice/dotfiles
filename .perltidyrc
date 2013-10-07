@@ -1,1 +1,5 @@
+-pbp
 -ce     # cuddled else
+-mft=1  # maximum fields per table
+-cab=1  # comma arrow breakpoints
+-q      # quiet errors
