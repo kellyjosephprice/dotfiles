@@ -43,3 +43,6 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+# END DEFAULTS
+gem 'acts-as-taggable-on'

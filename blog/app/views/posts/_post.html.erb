@@ -1,0 +1,9 @@
+<h2><%= post.title %></h2>
+<p><%= post.text %></p>
+<p>tags: <%= raw post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %></p>
+<p>
+    <%= link_to 'Show', post_path(post) %> |
+    <%= link_to 'Edit', edit_post_path(post) %> |
+    <%= link_to 'Destroy', post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %>
+</p>
+      
