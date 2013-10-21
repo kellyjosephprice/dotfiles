@@ -1,14 +1,16 @@
-<p>
-  <%= comment.commenter %>
-  <strong>says</strong>
-</p>
+<div class="comment rounded-corners">
+    <p>
+      <%= comment.commenter %>
+      <strong>says</strong>
+    </p>
 
-<p>
-  <%= comment.body %>
-</p>
+    <p>
+      <%= comment.body %>
+    </p>
 
-<p>
-<%= link_to 'Destroy Comment', [comment.post, comment],
-  method: :delete,
-  data: { confirm: 'Are you sure?' } %>
-</p>
+    <p>
+    <%= link_to 'Destroy Comment', [comment.post, comment],
+      method: :delete,
+      data: { confirm: 'Are you sure?' } %>
+    </p>
+</div>

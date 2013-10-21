@@ -1,4 +1,10 @@
-<h1>Listing posts</h1>
+<h1>
+  <% if params[:tag] %>
+    <%= params[:tag] %>
+  <% else %>
+    <%= "All Posts" %>
+  <% end %>
+</h1>
 
 <div id="tag_cloud">
   <% tag_cloud Post.tag_counts, %w{s m l} do |tag, css_class| %>
