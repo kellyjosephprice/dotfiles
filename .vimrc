@@ -29,10 +29,14 @@ set ruler			" show the cursor position all the time
 set showcmd			" display incomplete commands
 set incsearch		" do incremental searching
 
+set expandtab		" no real tabs
 set shiftwidth=4	" autoindent width
 set tabstop=4		" tab width
-set expandtab		" no real tabs
 set softtabstop=4   " treat 4 spaces as tabs
+
+" There should be a better way:
+au FileType ruby set shiftwidth=2 tabstop=2 softtabstop=2  
+au FileType eruby set shiftwidth=2 tabstop=2 softtabstop=2  
 
 set so=3            " scrolloff
 set textwidth=78    " wraps text
