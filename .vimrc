@@ -48,6 +48,9 @@ inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
 inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
   \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
+autocmd FileType ruby  set shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType eruby set shiftwidth=2 tabstop=2 softtabstop=2
+
 " perly stuff
 autocmd FileType perl set makeprg=perl\ -c\ %\ $*
 autocmd FileType perl set errorformat=%f:%l:%m
@@ -74,21 +77,6 @@ au Filetype perl nmap <F2> :call DoTidy()<CR>
 
 "shortcut for visual mode to run on the the current visual selection"
 au Filetype perl vmap <F2> :Tidy<CR>
-
-" Too much/too little magic
-"inoremap ( ()<left>
-"inoremap { {}<left>
-"inoremap [ []<left>
-"inoremap ' ''<left>
-"inoremap " ""<left>
-
-" dvorak remap
-"noremap h h
-"noremap t j
-"noremap n k
-"noremap s l
-"noremap l n
-"noremap L N
 
 " easy access to beginning and end of line
 noremap - $
