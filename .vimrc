@@ -91,8 +91,6 @@ noremap _ ^
 
 set laststatus=2
 
-set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
-
 " Print Options
 set printoptions=header:0,syntax:n,paper:letter,formfeed:y
 
