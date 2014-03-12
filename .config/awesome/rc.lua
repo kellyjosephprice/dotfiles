@@ -40,7 +40,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/home/kelly/.config/awesome/themes/adzuki/theme.lua")
+beautiful.init("/home/kprice/.config/awesome/themes/solarized/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "xterm"
@@ -77,7 +77,13 @@ end
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ " | one ", " | two ", " | three " }, s, layouts[1])
+    tags[s] = awful.tag({ 
+        " | one ", 
+        " | two ", 
+        " | three ", 
+        " | four ",
+        " | five ",
+    }, s, layouts[1])
 end
 -- }}}
 
@@ -151,7 +157,7 @@ for s = 1, screen.count() do
     mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
 
     -- Create the wibox
-    mywibox[s] = awful.wibox({ position = "top", screen = s , height = 20 })
+    mywibox[s] = awful.wibox({ position = "top", screen = s , height = 24 })
 
     -- Widgets that are aligned to the left
     local left_layout = wibox.layout.fixed.horizontal()
@@ -231,7 +237,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
     -- Scratchpad
-    awful.key({ modkey}, "s", function () scratch.drop(terminal, "center", "right", .4, .8, 1) end),
+    awful.key({ modkey}, "s", function () scratch.drop(terminal, "center", "right", .5, .9, 1) end),
 
     -- Prompt
     awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),

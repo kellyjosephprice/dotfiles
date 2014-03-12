@@ -82,9 +82,16 @@ au Filetype perl nmap <F2> :call DoTidy()<CR>
 "shortcut for visual mode to run on the the current visual selection"
 au Filetype perl vmap <F2> :Tidy<CR>
 
+" markdown to html
+map <F3> :%!markdown<CR>
+
 " easy access to beginning and end of line
 noremap - $
 noremap _ ^
+
+set laststatus=2
+
+set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
 
 " Print Options
 set printoptions=header:0,syntax:n,paper:letter,formfeed:y

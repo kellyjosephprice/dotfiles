@@ -11,8 +11,8 @@ alias proxmox="ssh root@10.64.33.64"
 source /usr/share/git/completion/git-completion.bash
 
 # ruby
-export PATH=~/.gem/ruby/2.0.0/bin:$PATH
-export GEM_HOME=~/.gem/ruby/2.0.0/
+export PATH=~/.gem/ruby/2.1.0/bin:$PATH
+export GEM_HOME=~/.gem/ruby/2.1.0/
 
 # perl
 source ~/perl5/perlbrew/etc/bashrc
