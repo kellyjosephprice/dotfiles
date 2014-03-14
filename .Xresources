@@ -19,7 +19,8 @@ XTerm*visualbell:	    true
 XTerm*cursorBlink:	    true
 !XTerm*faceName:		    DejaVuSansMono:pixelsize=10
 !XTerm*faceName:		    Inconsolata:pixelsize=16
-XTerm*faceName:		    SourceCodePro:style=Regular:size=11
+!XTerm*faceName:		    SourceCodePro:style=Regular:size=11
+XTerm*faceName:		    SourceCodeProforPowerline:style=Regular:size=11
 !XTerm*faceName:		    Monaco:pixelsize=10
 !XTerm*faceName:		    Mensch:pixelsize=9
 XTerm*VT100.translations: #override <Btn1Up>: select-end(PRIMARY, CLIPBOARD, CUT_BUFFER0)
