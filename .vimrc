@@ -66,6 +66,9 @@ let perl_include_pod = 1
 " syntax color complex things like @{${"foo"}}
 let perl_extended_vars = 1
 
+let g:rubycomplete_buffer_loading = 1
+let g:rubycomplete_rails = 1
+
 "define :Tidy command to run perltidy on visual selection || entire buffer"
 command -range=% -nargs=* Tidy <line1>,<line2>!perltidy
 
