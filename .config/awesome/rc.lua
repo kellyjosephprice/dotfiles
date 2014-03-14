@@ -40,7 +40,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/home/kprice/.config/awesome/themes/solarized/theme.lua")
+beautiful.init("/home/kelly/.config/awesome/themes/adzuki/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "xterm"
@@ -76,12 +76,12 @@ end
 -- Define a tag table which hold all screen tags.
 tags = {}
 for s = 1, screen.count() do
-    -- Each screen has its own tag table.
+    tags[s] = awful.tag({
         " | one ", 
         " | two ", 
         " | three ", 
         " | four ",
-        " | five ",
+        " | five "
     }, s, layouts[1])
 end
 -- }}}
