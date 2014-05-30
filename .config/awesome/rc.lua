@@ -83,6 +83,8 @@ for s = 1, screen.count() do
         " | three ", 
         " | four ",
         " | five ",
+        " | six ",
+        " | seven ",
     }, s, layouts[1])
 end
 -- }}}

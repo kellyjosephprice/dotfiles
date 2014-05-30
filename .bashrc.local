@@ -11,9 +11,11 @@ alias proxmox="ssh root@10.64.33.64"
 source /usr/share/git/completion/git-completion.bash
 
 # ruby
-export PATH=~/.gem/ruby/2.1.0/bin:$PATH
+export PATH=~/.gem/ruby/2.1.0/bin:~/perl5/bin/:$PATH
 export GEM_HOME=~/.gem/ruby/2.1.0/
 
 # perl
 source ~/perl5/perlbrew/etc/bashrc
 eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
+
+export PERL5LIB=$PERL5LIB:~/src/svn/postbuild/trunk/cudainstaller/
