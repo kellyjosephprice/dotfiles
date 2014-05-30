@@ -1,3 +1,4 @@
-.vim/.*
+.vim/tmp/*
 .vim/backup/*
+.vim/.netrwhist
 .bashrc.local

@@ -12,40 +12,44 @@ xft*hintstyle:          hintfull
 xft*lcdfilter:          lcddefault
 xft*autohint:           0
 
-! Xterm Settings -------------------------------------------------------------
-XTerm*highlightSelection: true
-XTerm*scrollBar:	    false
-XTerm*visualbell:	    true
-XTerm*cursorBlink:	    true
-!XTerm*faceName:		    DejaVuSansMono:pixelsize=10
-!XTerm*faceName:		    Inconsolata:pixelsize=16
-!XTerm*faceName:		    SourceCodePro:style=Regular:size=11
-XTerm*faceName:		    SourceCodeProforPowerline:style=Regular:size=11
-!XTerm*faceName:		    Monaco:pixelsize=10
-!XTerm*faceName:		    Mensch:pixelsize=9
-XTerm*VT100.translations: #override <Btn1Up>: select-end(PRIMARY, CLIPBOARD, CUT_BUFFER0)
-XTerm*metaSendsEscape: true
-Xterm*saveLines: 4096
-XTerm*termName: xterm-256color
+! xterm Settings -------------------------------------------------------------
+xterm*highlightSelection: true
+xterm*scrollBar:	    false
+xterm*visualbell:	    true
+xterm*cursorBlink:	    true
+!xterm*faceName:		    DejaVuSansMono:pixelsize=10
+!xterm*faceName:		    Inconsolata:pixelsize=16
+!xterm*faceName:		    SourceCodePro:style=Regular:size=11
+xterm*faceName:		    SourceCodeProforPowerline:style=Regular:size=11
+!xterm*faceName:		    Monaco:pixelsize=10
+!xterm*faceName:		    Mensch:pixelsize=9
+xterm*VT100.translations: #override <Btn1Up>: select-end(PRIMARY, CLIPBOARD, CUT_BUFFER0)
+xterm*metaSendsEscape: true
+xterm*saveLines: 4096
+xterm*termName: xterm-256color
 
 !xscreensaver ------------------------------------------------------------------
 
 !font settings
-xscreensaver.Dialog.headingFont:        SourceCodePro:pixelsize=14
-xscreensaver.Dialog.bodyFont:           SourceCodePro:pixelsize=14
-xscreensaver.Dialog.labelFont:          SourceCodePro:pixelsize=14
-xscreensaver.Dialog.unameFont:          SourceCodePro:pixelsize=14
-xscreensaver.Dialog.buttonFont:         SourceCodePro:pixelsize=14
-xscreensaver.Dialog.dateFont:           SourceCodePro:pixelsize=14
-xscreensaver.passwd.passwdFont:         SourceCodePro:pixelsize=14
+xscreensaver.Dialog.headingFont:        SourceCodePro:pixelsize=10
+xscreensaver.Dialog.bodyFont:           SourceCodePro:pixelsize=10
+xscreensaver.Dialog.labelFont:          SourceCodePro:pixelsize=10
+xscreensaver.Dialog.unameFont:          SourceCodePro:pixelsize=10
+xscreensaver.Dialog.buttonFont:         SourceCodePro:pixelsize=10
+xscreensaver.Dialog.dateFont:           SourceCodePro:pixelsize=10
+xscreensaver.passwd.passwdFont:         SourceCodePro:pixelsize=10
+
+xscreensaver.Dialog.internalBorderWidth:0
+xscreensaver.Dialog.borderWidth:        0
+xscreensaver.Dialog.shadowThickness:    2
+xscreensaver.passwd.thermometer.width:       6
+xscreensaver.dateFormat:    %I:%M%P %a %b %d, %Y
 
 ! Solarized color scheme for the X Window System
 !
 ! http://ethanschoonover.com/solarized
 
-
 ! Common
-
 #define S_yellow        #b58900
 #define S_orange        #cb4b16
 #define S_red           #dc322f
@@ -55,9 +59,7 @@ xscreensaver.passwd.passwdFont:         SourceCodePro:pixelsize=14
 #define S_cyan          #2aa198
 #define S_green         #859900
 
-
 ! Dark
-
 #define S_base03        #002b36
 #define S_base02        #073642
 #define S_base01        #586e75
@@ -67,9 +69,7 @@ xscreensaver.passwd.passwdFont:         SourceCodePro:pixelsize=14
 #define S_base2         #eee8d5
 #define S_base3         #fdf6e3
 
-
 ! Light
-
 ! #define S_base03        #fdf6e3
 ! #define S_base02        #eee8d5
 ! #define S_base01        #93a1a1
@@ -109,4 +109,3 @@ xscreensaver.passwd.passwdFont:         SourceCodePro:pixelsize=14
 *color13:                 S_violet
 *color14:                 S_base1
 *color15:                 S_base3
-
