@@ -34,12 +34,15 @@ set shiftwidth=4	" autoindent width
 set tabstop=4		" tab width
 set softtabstop=4   " treat 4 spaces as tabs
 
+set hidden
+set showmatch
+
 " There should be a better way:
-au FileType ruby set shiftwidth=2 tabstop=2 softtabstop=2  
-au FileType eruby set shiftwidth=2 tabstop=2 softtabstop=2  
+au FileType ruby set shiftwidth=2 tabstop=2 softtabstop=2
+au FileType eruby set shiftwidth=2 tabstop=2 softtabstop=2
 
 set so=3            " scrolloff
-set textwidth=78    " wraps text
+set textwidth=72    " wraps text
 set number          " display line number
 
 set splitright

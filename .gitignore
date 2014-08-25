@@ -2,3 +2,5 @@
 .vim/backup/*
 .vim/.netrwhist
 .bashrc.local
+.config/*
+!.config/awesome/
