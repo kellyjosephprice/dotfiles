@@ -40,10 +40,10 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/home/kelly/.config/awesome/themes/adzuki/theme.lua")
+beautiful.init("/home/kelly/.config/awesome/themes/ics-hd/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "xterm"
+terminal = "uxterm"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -81,8 +81,8 @@ for s = 1, screen.count() do
         " | two ", 
         " | three ", 
         " | four ",
-        " | five "
-    }, s, layouts[1])
+        
+    }, s, layouts[2])
 end
 -- }}}
 

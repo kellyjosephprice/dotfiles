@@ -113,4 +113,4 @@ PS1=${SCREENTITLE}${PS1}
 # load .bashrc.local
 [[ -f ${HOME}/.bashrc.local ]] && source ${HOME}/.bashrc.local
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

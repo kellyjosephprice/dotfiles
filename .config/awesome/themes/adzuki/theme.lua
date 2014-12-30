@@ -5,8 +5,7 @@
 theme = {}
 home = os.getenv("HOME")
 
---theme.font          = "DejaVu Sans 8"
-theme.font          = "Ubuntu 9"
+theme.font          = "Ubuntu 24"
 
 theme.bg_normal     = "#525252"
 theme.bg_focus      = "#5e6a79"
@@ -18,7 +17,7 @@ theme.fg_focus      = "#f5f5f5"
 theme.fg_urgent     = "#525252"
 theme.fg_minimize   = "#f5f5f5"
 
-theme.border_width  = "2"
+theme.border_width  = "4"
 theme.border_normal = "#525252"
 theme.border_focus  = "#f5f5f5"
 theme.border_marked = "#656565"
@@ -33,7 +32,7 @@ theme.tasklist_floating_icon = home .. "/.config/awesome/themes/adzuki/tasklist/
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
 theme.menu_submenu_icon = home .. "/.config/awesome/themes/adzuki/submenu.png"
-theme.menu_height = "18"
+theme.menu_height = "48"
 theme.menu_width  = "100"
 
 -- You can add as many variables as

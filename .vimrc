@@ -38,12 +38,11 @@ set shiftwidth=4	" autoindent width
 set tabstop=4		" tab width
 set softtabstop=4   " treat 4 spaces as tabs
 
-" There should be a better way:
-au FileType ruby set shiftwidth=2 tabstop=2 softtabstop=2  
-au FileType eruby set shiftwidth=2 tabstop=2 softtabstop=2  
+set hidden
+set showmatch
 
 set so=3            " scrolloff
-set textwidth=78    " wraps text
+set textwidth=72    " wraps text
 set number          " display line number
 
 set splitright
@@ -59,6 +58,12 @@ inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
 autocmd FileType ruby       set shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType eruby      set shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType javascript set shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType jst        set shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType html       set shiftwidth=2 tabstop=2 softtabstop=2
+
+au BufNewFile,BufRead *.ejs		set filetype=jst
+au BufNewFile,BufRead *.jst  		set filetype=jst
+au BufNewFile,BufRead *.hamljs set filetype=jst
 
 " perly stuff
 autocmd FileType perl set makeprg=perl\ -c\ %\ $*
@@ -70,9 +75,6 @@ let perl_include_pod = 1
 
 " syntax color complex things like @{${"foo"}}
 let perl_extended_vars = 1
-
-let g:rubycomplete_buffer_loading = 1
-let g:rubycomplete_rails = 1
 
 "define :Tidy command to run perltidy on visual selection || entire buffer"
 command -range=% -nargs=* Tidy <line1>,<line2>!perltidy
@@ -153,6 +155,9 @@ if has("autocmd")
     \ if line("'\"") > 1 && line("'\"") <= line("$") |
     \   exe "normal! g`\"" |
     \ endif
+
+  autocmd BufReadPost,FileReadPost,BufNewFile,BufEnter * 
+    \ call system("tmux rename-window " . expand("%:t"))
 
   augroup END
 
