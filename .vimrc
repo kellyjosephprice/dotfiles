@@ -24,6 +24,10 @@ set backspace=indent,eol,start
 set backup		            " keep a backup file
 set backupdir=~/.vim/backup " keep backups here
 set directory=~/.vim/tmp	" keep swaps here
+set undodir=~/.vim/undodir
+set undofile
+set undolevels=1000
+set undoreload=10000
 set history=50		        " keep 50 lines of command line history
 set ruler			" show the cursor position all the time
 set showcmd			" display incomplete commands
@@ -52,8 +56,9 @@ inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
 inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
   \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
-autocmd FileType ruby  set shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType eruby set shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType ruby       set shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType eruby      set shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType javascript set shiftwidth=2 tabstop=2 softtabstop=2
 
 " perly stuff
 autocmd FileType perl set makeprg=perl\ -c\ %\ $*
