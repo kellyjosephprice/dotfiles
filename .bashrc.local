@@ -1,12 +1,7 @@
 # .bashrc.local
 #   Add local environment variables here
 
-export SVN_SSH="ssh -i /home/kprice/.ssh/kprice.key"
-export SVNROOT=svn+ssh://kprice@code.cudaops.com/data/svn
-
-alias ubuntu="ssh kprice@10.64.251.171"
-alias hyperv="rdesktop 10.64.254.234"
-alias proxmox="ssh root@10.64.33.64"
+alias be='bundle exec'
 
 source /usr/share/git/completion/git-completion.bash
 

@@ -1,7 +1,7 @@
 theme = {}
 home = os.getenv("HOME")
 
-theme.font          = "Ubuntu 14"
+theme.font          = "Ubuntu 13"
 
 theme.bg_normal     = "#000000"
 theme.bg_focus      = "#33b5e5"

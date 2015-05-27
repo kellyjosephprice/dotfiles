@@ -17,9 +17,7 @@ xterm*highlightSelection: true
 xterm*scrollBar:	    false
 xterm*visualbell:	    true
 xterm*cursorBlink:	    true
-!xterm*faceName:		    DejaVuSansMono:pixelsize=10
-!xterm*faceName:		    Inconsolata:pixelsize=26
-xterm*faceName:		    SourceCodeProforPowerline:style=Regular:size=14
+xterm*faceName:		    SourceCodeProforPowerline:style=Regular:size=11
 xterm*VT100.translations: #override <Btn1Up>: select-end(PRIMARY, CLIPBOARD, CUT_BUFFER0)
 xterm*metaSendsEscape: true
 xterm*saveLines: 4096
