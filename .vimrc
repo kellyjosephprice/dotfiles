@@ -24,6 +24,10 @@ set backspace=indent,eol,start
 set backup		            " keep a backup file
 set backupdir=~/.vim/backup " keep backups here
 set directory=~/.vim/tmp	" keep swaps here
+set undodir=~/.vim/undodir
+set undofile
+set undolevels=1000
+set undoreload=10000
 set history=50		        " keep 50 lines of command line history
 set ruler			" show the cursor position all the time
 set showcmd			" display incomplete commands

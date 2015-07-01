@@ -1,6 +1,9 @@
 .vim/tmp/*
 .vim/backup/*
 .vim/.netrwhist
+.vim/undodir
+
 .bashrc.local
+
 .config/*
 !.config/awesome/
