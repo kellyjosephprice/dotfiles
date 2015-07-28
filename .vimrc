@@ -19,31 +19,30 @@ endif
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-" allow backspacing over everything in insert mode
 set backspace=indent,eol,start
-set backup		            " keep a backup file
-set backupdir=~/.vim/backup " keep backups here
-set directory=~/.vim/tmp	" keep swaps here
+set backup
+set backupdir=~/.vim/backup
+set directory=~/.vim/tmp
 set undodir=~/.vim/undodir
 set undofile
 set undolevels=1000
 set undoreload=10000
-set history=50		        " keep 50 lines of command line history
-set ruler			" show the cursor position all the time
-set showcmd			" display incomplete commands
-set incsearch		" do incremental searching
+set history=50
+set ruler
+set showcmd
+set incsearch
 
-set expandtab		" no real tabs
-set shiftwidth=4	" autoindent width
-set tabstop=4		" tab width
-set softtabstop=4   " treat 4 spaces as tabs
+set expandtab
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
 
 set hidden
 set showmatch
 
-set so=3            " scrolloff
-set textwidth=72    " wraps text
-set number          " display line number
+set so=3
+set textwidth=72
+set relativenumber
 
 set splitright
 
