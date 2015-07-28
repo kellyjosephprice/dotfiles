@@ -13,6 +13,8 @@ local menubar = require("menubar")
 -- Pop-up terminal
 local scratch = require("scratch")
 
+naughty.config.defaults.position = "bottom_right"
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -82,6 +84,8 @@ for s = 1, screen.count() do
         " | three ", 
         " | four ",
         " | five ",
+        " | six ",
+        " | seven ",
     }, s, layouts[2])
 end
 -- }}}

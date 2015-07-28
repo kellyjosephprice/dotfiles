@@ -22,6 +22,7 @@ alias mv='mv -i'
 alias less='less -R'
 alias xcalc="xcalc -stipple"
 alias grep="grep --color=always"
+alias be="bundle exec"
 
 source $HOME/.profile
 source /home/kelly/.rvm/scripts/rvm

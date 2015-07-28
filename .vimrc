@@ -59,6 +59,7 @@ autocmd FileType ruby       set shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType eruby      set shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType javascript set shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType jst        set shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType coffee     set shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType html       set shiftwidth=2 tabstop=2 softtabstop=2
 
 au BufNewFile,BufRead *.ejs		set filetype=jst
