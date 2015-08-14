@@ -32,7 +32,7 @@ theme.tasklist_floating_icon = home .. "/.config/awesome/themes/adzuki/tasklist/
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
 theme.menu_submenu_icon = home .. "/.config/awesome/themes/adzuki/submenu.png"
-theme.menu_height = "48"
+theme.menu_height = "64"
 theme.menu_width  = "100"
 
 -- You can add as many variables as

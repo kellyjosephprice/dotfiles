@@ -10,7 +10,7 @@ Xft*rgba:               rgb
 xft*hinting:            1
 xft*hintstyle:          hintfull
 xft*lcdfilter:          lcddefault
-xft*autohint:           0
+xft*autohint:           rgb
 
 ! xterm Settings -------------------------------------------------------------
 xterm*highlightSelection: true
