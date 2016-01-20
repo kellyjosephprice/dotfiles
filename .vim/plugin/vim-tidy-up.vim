@@ -1,1 +1,0 @@
-/home/kelly/git/vim-tidy-up/plugin/vim-tidy-up.vim

@@ -1,14 +1,3 @@
-" An example for a vimrc file.
-"
-" Maintainer:	Bram Moolenaar <Bram@vim.org>
-" Adoptor:      Kelly Price <kellyjosephprice@gmail.com>
-" Last change:	2012 Oct 08
-"
-" To use it, copy it to
-"     for Unix and OS/2:  ~/.vimrc
-"	      for Amiga:  s:.vimrc
-"  for MS-DOS and Win32:  $VIM\_vimrc
-"	    for OpenVMS:  sys$login:.vimrc
 
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
@@ -18,6 +7,33 @@ endif
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+let g:vundle_default_git_proto='git'
+
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'thoughtbot/vim-rspec'
+Plugin 'mstahl/vim-tidy-up'
+Plugin 'vim-airline/vim-airline'
+Plugin 'tpope/vim-rails'
+Plugin 'altercation/vim-colors-solarized'
+
+Plugin 'AnsiEsc.vim'
+Plugin 'AutoComplPop'
+Plugin 'L9'
+Plugin 'cecutil'
+Plugin 'perl-support.vim'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+set re=1
 
 set backspace=indent,eol,start
 set backup
@@ -46,6 +62,8 @@ set relativenumber
 
 set splitright
 
+set clipboard=unnamed
+
 " auto-complte menu
 set completeopt=longest,menuone	" auto-completion magic
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
@@ -61,8 +79,8 @@ autocmd FileType jst        set shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType coffee     set shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType html       set shiftwidth=2 tabstop=2 softtabstop=2
 
-au BufNewFile,BufRead *.ejs		set filetype=jst
-au BufNewFile,BufRead *.jst  		set filetype=jst
+au BufNewFile,BufRead *.ejs	   set filetype=jst
+au BufNewFile,BufRead *.jst    set filetype=jst
 au BufNewFile,BufRead *.hamljs set filetype=jst
 
 " perly stuff
