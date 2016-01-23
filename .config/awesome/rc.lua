@@ -13,7 +13,7 @@ local menubar = require("menubar")
 -- Pop-up terminal
 local scratch = require("scratch")
 
-naughty.config.defaults.position = "bottom_right"
+naughty.config.defaults.position = "top_right"
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -79,13 +79,13 @@ end
 tags = {}
 for s = 1, screen.count() do
     tags[s] = awful.tag({
-        " | one ", 
-        " | two ", 
-        " | three ", 
-        " | four ",
-        " | five ",
-        " | six ",
-        " | seven ",
+        " |1| browser ", 
+        " |2| terms ", 
+        " |3| play ", 
+        " |4| hearthstone ",
+        " |5| ",
+        " |6| ",
+        " |7| ",
     }, s, layouts[2])
 end
 -- }}}
