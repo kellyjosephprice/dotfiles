@@ -2,6 +2,7 @@
 .vim/backup/*
 .vim/.netrwhist
 .vim/undodir
+.vim/bundle/*
 
 .bashrc.local
 
