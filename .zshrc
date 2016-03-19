@@ -64,7 +64,7 @@ source $HOME/.profile
 source $HOME/.rvm/scripts/rvm
 
 export EDITOR=vim
-export PATH=".:bin:$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH="$HOME/.rvm/bin:.:bin:$PATH" # Add RVM to PATH for scripting
 export RBENV_ROOT=/usr/local/var/rbenv
 export LD_LIBRARY_PATH=/usr/local/lib # osx libmagic ?
 
