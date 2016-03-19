@@ -17,11 +17,12 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'thoughtbot/vim-rspec'
 Plugin 'mstahl/vim-tidy-up'
 Plugin 'vim-airline/vim-airline'
-Plugin 'tpope/vim-rails'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'tpope/vim-rails'
+Plugin 'thoughtbot/vim-rspec'
 
 Plugin 'AnsiEsc.vim'
 Plugin 'AutoComplPop'
