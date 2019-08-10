@@ -7,12 +7,6 @@ endif
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source ~/.config/nvim/init.vim
-endif
-
 call plug#begin('~/.vim/bundle')
 Plug 'junegunn/vim-plug'
 
