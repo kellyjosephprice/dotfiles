@@ -4,3 +4,6 @@
 [submodule ".tmux/plugins/tmux-sensible"]
 	path = .tmux/plugins/tmux-sensible
 	url = git@github.com:tmux-plugins/tmux-sensible.git
+[submodule ".tmux/plugins/tmux-themepack"]
+	path = .tmux/plugins/tmux-themepack
+	url = git@github.com:kellyjosephprice/tmux-themepack.git
