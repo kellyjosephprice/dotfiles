@@ -27,6 +27,7 @@ Plug 'leafgarland/typescript-vim'
 
 Plug 'aliou/sql-heredoc.vim'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'powerman/vim-plugin-AnsiEsc'
 
 "Plug 'mindriot101/vim-yapf'
 "Plug 'Vimjas/vim-python-pep8-indent'
