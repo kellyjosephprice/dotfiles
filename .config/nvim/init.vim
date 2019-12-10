@@ -12,6 +12,7 @@ Plug 'junegunn/vim-plug'
 
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-vinegar'
 
 Plug 'altercation/vim-colors-solarized'
 "Plug 'vim-airline/vim-airline'
@@ -28,6 +29,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'aliou/sql-heredoc.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'powerman/vim-plugin-AnsiEsc'
+
 
 "Plug 'mindriot101/vim-yapf'
 "Plug 'Vimjas/vim-python-pep8-indent'
@@ -75,6 +77,16 @@ set synmaxcol=2048
 set splitright
 
 set clipboard+=unnamedplus
+
+"let g:netrw_banner = 0
+"let g:netrw_liststyle = 3
+"let g:netrw_browse_split = 4
+"let g:netrw_altv = 1
+"let g:netrw_winsize = 25
+"augroup ProjectDrawer
+"  autocmd!
+"  autocmd VimEnter * :Vexplore
+"augroup END
 
 au BufNewFile,BufRead *.plist set filetype=xml
 
