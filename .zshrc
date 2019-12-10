@@ -93,6 +93,7 @@ export EDITOR='vim'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 [[ -f ~/.aliases ]] && source ~/.aliases
+[[ -f ~/.aliases.local ]] && source ~/.aliases.local
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
 setopt complete_aliases
