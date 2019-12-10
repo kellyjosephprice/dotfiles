@@ -15,8 +15,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-vinegar'
 
 Plug 'altercation/vim-colors-solarized'
-"Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
+Plug 'arcticicestudio/nord-vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 Plug 'junegunn/fzf'
 "Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
@@ -30,7 +31,6 @@ Plug 'aliou/sql-heredoc.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'powerman/vim-plugin-AnsiEsc'
 
-
 "Plug 'mindriot101/vim-yapf'
 "Plug 'Vimjas/vim-python-pep8-indent'
 call plug#end()
@@ -40,7 +40,8 @@ let mapleader = "\\"
 let g:vim_json_syntax_conceal = 0
 let g:vim_jsx_pretty_colorful_config = 1
 
-let g:yapf_style = "pep8"
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'angr'
 
 set re=1
 
@@ -104,10 +105,6 @@ noremap <Left> <nop>
 noremap <Right> <nop>
 
 set laststatus=2
-
-"let g:airline_powerline_fonts = 1
-"let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
-"let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
 
 set encoding=utf-8
 
