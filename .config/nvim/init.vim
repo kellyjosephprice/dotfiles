@@ -14,7 +14,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-vinegar'
 
-Plug 'altercation/vim-colors-solarized'
+"Plug 'altercation/vim-colors-solarized'
 Plug 'arcticicestudio/nord-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -79,16 +79,6 @@ set splitright
 
 set clipboard+=unnamedplus
 
-"let g:netrw_banner = 0
-"let g:netrw_liststyle = 3
-"let g:netrw_browse_split = 4
-"let g:netrw_altv = 1
-"let g:netrw_winsize = 25
-"augroup ProjectDrawer
-"  autocmd!
-"  autocmd VimEnter * :Vexplore
-"augroup END
-
 au BufNewFile,BufRead *.plist set filetype=xml
 
 autocmd FileType python set tabstop=4
@@ -109,6 +99,16 @@ set laststatus=2
 set encoding=utf-8
 
 set cmdheight=2
+
+if exists('$TMUX')
+	let &t_SI = "\<Esc>Ptmux;\<Esc>\e[6 q\<Esc>\\"
+	let &t_SR = "\<Esc>Ptmux;\<Esc>\e[4 q\<Esc>\\"
+	let &t_EI = "\<Esc>Ptmux;\<Esc>\e[2 q\<Esc>\\"
+else
+	let &t_SI = "\e[6 q"
+	let &t_SR = "\e[4 q"
+	let &t_EI = "\e[2 q"
+endif
 
 " Print Options
 set printoptions=header:0,syntax:n,paper:letter,formfeed:y
@@ -131,9 +131,10 @@ endif
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
+  set termguicolors
   syntax on
   set background=dark
-  colorscheme solarized
+  colorscheme nord
   set hlsearch
 endif
 
@@ -165,8 +166,8 @@ if has("autocmd")
     \   exe "normal! g`\"" |
     \ endif
 
-  autocmd BufEnter * call system("tmux rename-window " . expand("%:t"))
-  autocmd VimLeave * call system("tmux rename-window zsh")
+  "autocmd BufEnter * call system("tmux rename-window " . expand("%:t"))
+  "autocmd VimLeave * call system("tmux rename-window zsh")
   autocmd BufEnter * let &titlestring = ' ' . expand("%:t")
   set title
 
@@ -185,4 +186,5 @@ if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
 		  \ | wincmd p | diffthis
 endif
+
 
