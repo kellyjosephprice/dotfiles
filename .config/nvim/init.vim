@@ -16,6 +16,7 @@ Plug 'tpope/vim-vinegar'
 
 "Plug 'altercation/vim-colors-solarized'
 Plug 'arcticicestudio/nord-vim'
+Plug 'ayu-theme/ayu-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -77,7 +78,7 @@ set synmaxcol=2048
 
 set splitright
 
-set clipboard+=unnamedplus
+"set clipboard+=unnamedplus
 
 au BufNewFile,BufRead *.plist set filetype=xml
 
@@ -99,16 +100,6 @@ set laststatus=2
 set encoding=utf-8
 
 set cmdheight=2
-
-if exists('$TMUX')
-	let &t_SI = "\<Esc>Ptmux;\<Esc>\e[6 q\<Esc>\\"
-	let &t_SR = "\<Esc>Ptmux;\<Esc>\e[4 q\<Esc>\\"
-	let &t_EI = "\<Esc>Ptmux;\<Esc>\e[2 q\<Esc>\\"
-else
-	let &t_SI = "\e[6 q"
-	let &t_SR = "\e[4 q"
-	let &t_EI = "\e[2 q"
-endif
 
 " Print Options
 set printoptions=header:0,syntax:n,paper:letter,formfeed:y
@@ -134,7 +125,8 @@ if &t_Co > 2 || has("gui_running")
   set termguicolors
   syntax on
   set background=dark
-  colorscheme nord
+  let ayucolor="mirage"
+  colorscheme ayu
   set hlsearch
 endif
 
