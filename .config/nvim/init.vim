@@ -14,8 +14,9 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-vinegar'
 
-Plug 'altercation/vim-colors-solarized'
+"Plug 'altercation/vim-colors-solarized'
 Plug 'arcticicestudio/nord-vim'
+Plug 'ayu-theme/ayu-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -77,17 +78,7 @@ set synmaxcol=2048
 
 set splitright
 
-set clipboard+=unnamedplus
-
-"let g:netrw_banner = 0
-"let g:netrw_liststyle = 3
-"let g:netrw_browse_split = 4
-"let g:netrw_altv = 1
-"let g:netrw_winsize = 25
-"augroup ProjectDrawer
-"  autocmd!
-"  autocmd VimEnter * :Vexplore
-"augroup END
+"set clipboard+=unnamedplus
 
 au BufNewFile,BufRead *.plist set filetype=xml
 
@@ -131,9 +122,11 @@ endif
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
+  set termguicolors
   syntax on
   set background=dark
-  colorscheme solarized
+  let ayucolor="mirage"
+  colorscheme ayu
   set hlsearch
 endif
 
@@ -165,8 +158,8 @@ if has("autocmd")
     \   exe "normal! g`\"" |
     \ endif
 
-  autocmd BufEnter * call system("tmux rename-window " . expand("%:t"))
-  autocmd VimLeave * call system("tmux rename-window zsh")
+  "autocmd BufEnter * call system("tmux rename-window " . expand("%:t"))
+  "autocmd VimLeave * call system("tmux rename-window zsh")
   autocmd BufEnter * let &titlestring = ' ' . expand("%:t")
   set title
 
@@ -185,4 +178,5 @@ if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
 		  \ | wincmd p | diffthis
 endif
+
 
