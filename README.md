@@ -12,7 +12,8 @@
 * set git repo [Archwiki](https://wiki.archlinux.org/index.php/Dotfiles)
 * * add remote
 * * checkout master
-* install tpm for tmux
+* * git submodule init
+* * git submodule update
 * [install nvim plugins](#vim-plug)
 
 ### vim-plug
