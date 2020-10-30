@@ -8,7 +8,7 @@
 ### Setup
 
 * install zsh git tmux neovim curl
-* `sudo chsh -s zsh $USER`
+* `sudo chsh -s /bin/zsh $USER`
 * set git repo [Archwiki](https://wiki.archlinux.org/index.php/Dotfiles)
 * * add remote
 * * checkout master
