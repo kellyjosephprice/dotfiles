@@ -16,6 +16,8 @@ Plug 'tpope/vim-vinegar'
 
 Plug 'altercation/vim-colors-solarized'
 Plug 'arcticicestudio/nord-vim'
+Plug 'morhetz/gruvbox'
+Plug 'ayu-theme/ayu-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -133,7 +135,7 @@ endif
 if &t_Co > 2 || has("gui_running")
   syntax on
   set background=dark
-  colorscheme solarized
+  colorscheme gruvbox
   set hlsearch
 endif
 
