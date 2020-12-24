@@ -14,14 +14,15 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-vinegar'
 
-"Plug 'altercation/vim-colors-solarized'
+Plug 'altercation/vim-colors-solarized'
 Plug 'arcticicestudio/nord-vim'
 Plug 'ayu-theme/ayu-vim'
+Plug 'morhetz/gruvbox'
+
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-Plug 'junegunn/fzf'
-"Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'elzr/vim-json'
 Plug 'pangloss/vim-javascript'
@@ -32,17 +33,50 @@ Plug 'aliou/sql-heredoc.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'powerman/vim-plugin-AnsiEsc'
 
-"Plug 'mindriot101/vim-yapf'
-"Plug 'Vimjas/vim-python-pep8-indent'
+"Plug 'prettier/vim-prettier', {
+"  \ 'do': 'npm install',
+"  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+Plug 'dense-analysis/ale'
+
+Plug 'preservim/nerdcommenter'
+
 call plug#end()
 
-let mapleader = "\\"
+let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-tsserver']
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'angr'
+
+"let mapleader = "\\"
 
 let g:vim_json_syntax_conceal = 0
 let g:vim_jsx_pretty_colorful_config = 1
 
-let g:airline_powerline_fonts = 1
-let g:airline_theme = 'angr'
+"let g:prettier#exec_cmd_path="npx prettier"
+"let g:pretter#autoformat_require_pragma = 0
+"let g:prettier#autoformat_config_present = 1
+"let g:prettier#quickfix_enabled = 0
+"autocmd TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+
+let g:ale_fix_on_save = 1
+let b:ale_linters = {
+  \ 'javascript': ['eslint'],
+  \ 'javascriptreact': ['eslint'],
+  \ 'typescript': ['eslint'],
+  \ }
+let g:ale_fixers = {
+  \ 'javascript': ['prettier', 'eslint'],
+  \ 'javascriptreact': ['prettier', 'eslint'],
+  \ 'typescript': ['prettier', 'eslint'],
+  \ }
+let g:ale_javascript_eslint_executable = 'npx eslint'
+let g:ale_javascript_prettier_executable = 'npx prettier'
+let g:airline#extensions#ale#enabled = 1
 
 set re=1
 
@@ -126,7 +160,7 @@ if &t_Co > 2 || has("gui_running")
   syntax on
   set background=dark
   let ayucolor="mirage"
-  colorscheme ayu
+  colorscheme gruvbox
   set hlsearch
 endif
 
@@ -178,3 +212,7 @@ if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
 		  \ | wincmd p | diffthis
 endif
+
+" Set filename as tmux title
+autocmd BufReadPost,FileReadPost,BufNewFile,BufEnter * call system("tmux rename-window 'vim " . expand("%:t") . "'")
+autocmd VimLeave * call system("tmux setw automatic-rename")
