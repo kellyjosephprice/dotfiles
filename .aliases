@@ -1,1 +1,2 @@
 alias dot='git --git-dir=$HOME/git/dotfiles --work-tree=$HOME'
+alias vault='cd ~/git/vault/ruby'
