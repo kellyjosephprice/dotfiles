@@ -5,3 +5,6 @@
 	default = current
 [core]
 	pager = less -F -X
+  hooksPath = ~/.config/git/hooks'
+[alias]
+  clean-branches = !git branch | rg -v ' (master|next)$' | grep -v '*' | xargs git branch -D
