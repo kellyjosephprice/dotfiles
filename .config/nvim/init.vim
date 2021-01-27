@@ -3,12 +3,14 @@ if v:progname =~? "evim"
   finish
 endif
 
-" Use Vim settings, rather then Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
 set nocompatible
 
 call plug#begin('~/.vim/bundle')
 Plug 'junegunn/vim-plug'
+
+Plug 'sheerun/vimrc'
+Plug 'sheerun/vim-polyglot'
+Plug 'editorconfig/editorconfig-vim'
 
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -17,108 +19,49 @@ Plug 'tpope/vim-vinegar'
 Plug 'altercation/vim-colors-solarized'
 Plug 'arcticicestudio/nord-vim'
 Plug 'ayu-theme/ayu-vim'
-Plug 'morhetz/gruvbox'
+Plug 'sainnhe/gruvbox-material'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'angr'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_global_extensions = [
+  \ 'coc-tsserver',
+  \ 'coc-prettier',
+  \ 'coc-eslint'
+  \ ]
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
 
-Plug 'elzr/vim-json'
-Plug 'pangloss/vim-javascript'
-Plug 'maxmellon/vim-jsx-pretty'
-Plug 'leafgarland/typescript-vim'
+set updatetime=300
+set shortmess+=c
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
 
 Plug 'aliou/sql-heredoc.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'powerman/vim-plugin-AnsiEsc'
 
-"Plug 'prettier/vim-prettier', {
-"  \ 'do': 'npm install',
-"  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
-Plug 'dense-analysis/ale'
-
 Plug 'preservim/nerdcommenter'
-
 call plug#end()
 
-let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-tsserver']
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+let mapleader = ","
 
-let g:airline_powerline_fonts = 1
-let g:airline_theme = 'angr'
-
-"let mapleader = "\\"
-
-let g:vim_json_syntax_conceal = 0
-let g:vim_jsx_pretty_colorful_config = 1
-
-"let g:prettier#exec_cmd_path="npx prettier"
-"let g:pretter#autoformat_require_pragma = 0
-"let g:prettier#autoformat_config_present = 1
-"let g:prettier#quickfix_enabled = 0
-"autocmd TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
-
-let g:ale_fix_on_save = 1
-let b:ale_linters = {
-  \ 'javascript': ['eslint'],
-  \ 'javascriptreact': ['eslint'],
-  \ 'typescript': ['eslint'],
-  \ }
-let g:ale_fixers = {
-  \ 'javascript': ['prettier', 'eslint'],
-  \ 'javascriptreact': ['prettier', 'eslint'],
-  \ 'typescript': ['prettier', 'eslint'],
-  \ }
-let g:ale_javascript_eslint_executable = 'npx eslint'
-let g:ale_javascript_prettier_executable = 'npx prettier'
-let g:airline#extensions#ale#enabled = 1
-
-set re=1
-
-set backspace=indent,eol,start
-set backup
-set backupdir=~/.vim/backup
-set directory=~/.vim/tmp
-set undodir=~/.vim/undodir
-set undofile
-set undolevels=1000
-set undoreload=10000
-set history=50
-set ruler
+set re=0
 set showcmd
-set incsearch
-
-set path=.,,**
-
-set expandtab
-set shiftwidth=2
-set tabstop=2
-set softtabstop=2
-
-set hidden
-set showmatch
-
-set so=3
-set relativenumber
-
-set textwidth=72
-set colorcolumn=+1
-set synmaxcol=2048
-
 set splitright
+set clipboard+=unnamedplus
 
-"set clipboard+=unnamedplus
-
-au BufNewFile,BufRead *.plist set filetype=xml
-
-autocmd FileType python set tabstop=4
-
-au BufRead,BufNewFile *.god set filetype=ruby
+set textwidth=79
+set fo+=t
 
 " markdown to html
 map <F3> :%!markdown<CR>
@@ -129,90 +72,22 @@ noremap <Down> <nop>
 noremap <Left> <nop>
 noremap <Right> <nop>
 
-set laststatus=2
-
-set encoding=utf-8
-
 set cmdheight=2
 
 " Print Options
 set printoptions=header:0,syntax:n,paper:letter,formfeed:y
 
-" For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
-" let &guioptions = substitute(&guioptions, "t", "", "g")
-
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
-" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
-" so that you can undo CTRL-U after inserting a line break.
-inoremap <C-U> <C-G>u<C-U>
-
-" In many terminal emulators the mouse works just fine, thus enable it.
-if has('mouse')
-  set mouse=a
-endif
-
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if &t_Co > 2 || has("gui_running")
-  set termguicolors
-  syntax on
-  set background=dark
-  let ayucolor="mirage"
-  colorscheme gruvbox
-  set hlsearch
-endif
-
-" Only do this part when compiled with support for autocommands.
-if has("autocmd")
-
-  " Enable file type detection.
-  " Use the default filetype settings, so that mail gets 'tw' set to 72,
-  " 'cindent' is on in C files, etc.
-  " Also load indent files, to automatically do language-dependent indenting.
-  filetype plugin indent on
-
-  autocmd BufWritePost *.py call Yapf()
-
-  " Put these in an autocmd group, so that we can delete them easily.
-  augroup vimrcEx
-  au!
-
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
-
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it when the position is invalid or when inside an event handler
-  " (happens when dropping a file on gvim).
-  " Also don't do it when the mark is in the first line, that is the default
-  " position when opening a file.
-  autocmd BufReadPost *
-    \ if line("'\"") > 1 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
-
-  "autocmd BufEnter * call system("tmux rename-window " . expand("%:t"))
-  "autocmd VimLeave * call system("tmux rename-window zsh")
-  autocmd BufEnter * let &titlestring = ' ' . expand("%:t")
-  set title
-
-  augroup END
-
-else
-
-  set autoindent		" always set autoindenting on
-
-endif " has("autocmd")
-
-" Convenient command to see the difference between the current buffer and the
-" file it was loaded from, thus the changes you made.
-" Only define it when not defined already.
-if !exists(":DiffOrig")
-  command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-		  \ | wincmd p | diffthis
-endif
+set background=dark
+let g:gruvbox_material_background = 'hard'
+let g:gruvbox_material_palette = 'original'
+let g:airline_theme = 'gruvbox_material'
+colorscheme gruvbox-material
 
 " Set filename as tmux title
 autocmd BufReadPost,FileReadPost,BufNewFile,BufEnter * call system("tmux rename-window 'vim " . expand("%:t") . "'")
 autocmd VimLeave * call system("tmux setw automatic-rename")
+
+autocmd BufRead,BufNewFile *eslintrc set filetype=json
