@@ -1,3 +1,7 @@
 alias dot='git --git-dir=$HOME/git/dotfiles --work-tree=$HOME'
-alias readme='cd ~/git/readme/'
-alias editor='cd ~/git/readme/packages/editor'
+
+alias cdr='cd ~/git/readme/'
+alias cde='cd ~/git/readme/packages/editor'
+
+alias plz=sudo
+alias please=sudo

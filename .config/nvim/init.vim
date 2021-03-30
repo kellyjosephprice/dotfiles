@@ -4,6 +4,7 @@ if v:progname =~? "evim"
 endif
 
 set nocompatible
+let mapleader = ','
 
 call plug#begin('~/.vim/bundle')
 Plug 'junegunn/vim-plug'
@@ -11,6 +12,8 @@ Plug 'junegunn/vim-plug'
 Plug 'sheerun/vimrc'
 Plug 'sheerun/vim-polyglot'
 Plug 'editorconfig/editorconfig-vim'
+
+Plug 'Quramy/vim-js-pretty-template'
 
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -28,7 +31,6 @@ let g:airline_theme = 'angr'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
-  \ 'coc-tsserver',
   \ 'coc-prettier',
   \ 'coc-eslint'
   \ ]
@@ -41,19 +43,30 @@ endfunction
 set updatetime=300
 set shortmess+=c
 
-inoremap <silent><expr> <Tab>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<Tab>" :
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
+vmap <leader>ed  <Plug>(coc-codeaction-selected)
+nmap <leader>ed  <Plug>(coc-codeaction)
+imap <C-l> <Plug>(coc-snippets-expand)
+vmap <C-j> <Plug>(coc-snippets-select)
+
+Plug 'honza/vim-snippets'
 
 Plug 'aliou/sql-heredoc.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'powerman/vim-plugin-AnsiEsc'
 
 Plug 'preservim/nerdcommenter'
-call plug#end()
 
-let mapleader = ","
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+nnoremap <silent> <leader>f :Rg<CR>
+nnoremap <silent> <leader>b :Buffers<CR>
+nnoremap <silent> <C-f> :Files<CR>
+call plug#end()
 
 set re=0
 set showcmd
@@ -62,6 +75,12 @@ set clipboard+=unnamedplus
 
 set textwidth=79
 set fo+=t
+
+call jspretmpl#register_tag('pug', 'pug')
+
+autocmd FileType javascript JsPreTmpl
+autocmd FileType javascriptreact JsPreTmpl
+autocmd FileType typescript JsPreTmpl
 
 " markdown to html
 map <F3> :%!markdown<CR>

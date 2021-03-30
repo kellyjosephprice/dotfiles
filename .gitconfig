@@ -8,3 +8,7 @@
   hooksPath = ~/.config/git/hooks'
 [alias]
   clean-branches = !git branch | rg -v ' (master|next)$' | grep -v '*' | xargs git branch -D
+[rerere]
+	enabled = true
+[diff]
+	tool = vimdiff
