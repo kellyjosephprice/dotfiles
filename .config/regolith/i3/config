@@ -525,3 +525,7 @@ set_from_resource $i3-wm.program.2 i3-wm.program.2 :
 exec --no-startup-id $i3-wm.program.2
 set_from_resource $i3-wm.program.3 i3-wm.program.3 :
 exec --no-startup-id $i3-wm.program.3
+
+for_window [class="hl"] fullscreen enable
+assign [class="hl"] "9"
+for_window [class="zoom"] floating enable

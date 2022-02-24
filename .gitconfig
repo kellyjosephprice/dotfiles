@@ -1,5 +1,5 @@
 [user]
-	email = kelly@readme.com
+	email = kellyjosephprice@gmail.com
 	name = Kelly Joseph Price
 [push]
 	default = current
@@ -12,3 +12,13 @@
 	enabled = true
 [diff]
 	tool = vimdiff
+[help]
+	autocorrect = 1
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3

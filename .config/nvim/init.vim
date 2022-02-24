@@ -18,21 +18,24 @@ Plug 'Quramy/vim-js-pretty-template'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-vinegar'
+Plug 'junegunn/gv.vim'
 
 Plug 'altercation/vim-colors-solarized'
 Plug 'arcticicestudio/nord-vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'sainnhe/gruvbox-material'
+Plug 'dracula/vim'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'angr'
+let g:airline_theme = 'base16_gruvbox_dark_hard'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
   \ 'coc-prettier',
-  \ 'coc-eslint'
+  \ 'coc-eslint',
+  \ 'coc-tsserver',
   \ ]
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
@@ -52,6 +55,39 @@ vmap <leader>ed  <Plug>(coc-codeaction-selected)
 nmap <leader>ed  <Plug>(coc-codeaction)
 imap <C-l> <Plug>(coc-snippets-expand)
 vmap <C-j> <Plug>(coc-snippets-select)
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+function! ShowDocIfNoDiagnostic(timer_id)
+  if (coc#float#has_float() == 0 && CocHasProvider('hover') == 1)
+    silent call CocActionAsync('doHover')
+  endif
+endfunction
+
+function! s:show_hover_doc()
+  call timer_start(500, 'ShowDocIfNoDiagnostic')
+endfunction
+
+autocmd CursorHoldI * :call <SID>show_hover_doc()
+autocmd CursorHold * :call <SID>show_hover_doc()
+
+nmap <leader>do <Plug>(coc-codeaction)
 
 Plug 'honza/vim-snippets'
 
@@ -66,12 +102,24 @@ Plug 'junegunn/fzf.vim'
 nnoremap <silent> <leader>f :Rg<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <C-f> :Files<CR>
+
+Plug 'junegunn/goyo.vim'
+
+Plug '907th/vim-auto-save'
+"let g:auto_save = 1
+"let g:auto_save_events = ["CursorHold"]
+
+"Plug 'jdonaldson/vaxe'
+
 call plug#end()
 
 set re=0
 set showcmd
 set splitright
 set clipboard+=unnamedplus
+
+set expandtab
+set tabstop=2
 
 set textwidth=79
 set fo+=t
@@ -102,7 +150,6 @@ map Q gq
 set background=dark
 let g:gruvbox_material_background = 'hard'
 let g:gruvbox_material_palette = 'original'
-let g:airline_theme = 'gruvbox_material'
 colorscheme gruvbox-material
 
 " Set filename as tmux title
@@ -110,3 +157,5 @@ autocmd BufReadPost,FileReadPost,BufNewFile,BufEnter * call system("tmux rename-
 autocmd VimLeave * call system("tmux setw automatic-rename")
 
 autocmd BufRead,BufNewFile *eslintrc set filetype=json
+
+command Bacon :r! curl -s "https://baconipsum.com/api/?type=all-meat&paras=5&format=text"
