@@ -1,7 +1,13 @@
 alias dot='git --git-dir=$HOME/git/dotfiles --work-tree=$HOME'
 
-alias cdr='cd ~/git/readme/'
-alias cde='cd ~/git/readme/packages/editor'
+alias readme='cd ~/git/readme/'
+alias react='cd ~/git/readme/packages/react/'
+alias editor='cd ~/git/readme/packages/react/src/ui/MarkdownEditor'
+alias testme='npm run test -- --watch packages/react/src/ui/MarkdownEditor'
 
 alias plz=sudo
 alias please=sudo
+
+alias make="make --no-print-directory"
+
+alias tsc-diagnostics=npx tsc --diagnostics --explainFiles
