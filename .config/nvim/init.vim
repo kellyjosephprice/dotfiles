@@ -106,8 +106,11 @@ nnoremap <silent> <C-f> :Files<CR>
 Plug 'junegunn/goyo.vim'
 
 Plug '907th/vim-auto-save'
-"let g:auto_save = 1
-"let g:auto_save_events = ["CursorHold"]
+let g:auto_save = 0
+augroup ft_markdown
+  au!
+  au FileType markdown let b:auto_save = 1
+augroup END
 
 "Plug 'jdonaldson/vaxe'
 
