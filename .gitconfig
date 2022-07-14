@@ -22,3 +22,7 @@
 [merge]
 	tool = vimdiff
 	conflictstyle = diff3
+[credential]
+	helper = store
+[url "git@github.com:"]
+  insteadOf = https://github.com/

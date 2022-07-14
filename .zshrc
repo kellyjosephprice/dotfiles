@@ -104,6 +104,7 @@ export EDITOR='vim'
 [[ -f ~/.aliases ]] && source ~/.aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+[[ -f ~/.zshrc.shared ]] && source ~/.zshrc.shared
 
 setopt complete_aliases
 
