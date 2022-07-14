@@ -25,6 +25,10 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'sainnhe/gruvbox-material'
 Plug 'dracula/vim'
+"Plug 'junegunn/rainbow_parentheses.vim'
+"autocmd VimEnter * RainbowParentheses
+"Plug 'luochen1990/rainbow'
+"let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -161,4 +165,5 @@ autocmd VimLeave * call system("tmux setw automatic-rename")
 
 autocmd BufRead,BufNewFile *eslintrc set filetype=json
 
-command Bacon :r! curl -s "https://baconipsum.com/api/?type=all-meat&paras=5&format=text"
+
+command Bacon :r! curl -s "https://baconipsum.com/api/?type=all-meat&paras=3&format=text"
