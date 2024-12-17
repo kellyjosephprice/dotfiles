@@ -68,7 +68,7 @@ COMPLETION_WAITING_DOTS="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   fzf
-  zsh-vi-mode
+#  zsh-vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh

@@ -25,10 +25,6 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'sainnhe/gruvbox-material'
 Plug 'dracula/vim'
-"Plug 'junegunn/rainbow_parentheses.vim'
-"autocmd VimEnter * RainbowParentheses
-"Plug 'luochen1990/rainbow'
-"let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -40,8 +36,9 @@ let g:coc_global_extensions = [
   \ 'coc-prettier',
   \ 'coc-eslint',
   \ 'coc-tsserver',
+  \ 'coc-stylelintplus'
   \ ]
-" use <tab> for trigger completion and navigate to the next complete item
+
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~ '\s'
@@ -108,15 +105,10 @@ nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <C-f> :Files<CR>
 
 Plug 'junegunn/goyo.vim'
+Plug 'git@github.com:github/copilot.vim.git'
 
-Plug '907th/vim-auto-save'
-let g:auto_save = 0
-augroup ft_markdown
-  au!
-  au FileType markdown let b:auto_save = 1
-augroup END
-
-"Plug 'jdonaldson/vaxe'
+let g:copilot_no_tab_map = v:true
+inoremap <silent><expr> <S-TAB> copilot#Accept("")
 
 call plug#end()
 
@@ -127,6 +119,8 @@ set clipboard+=unnamedplus
 
 set expandtab
 set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 
 set textwidth=79
 set fo+=t
@@ -137,9 +131,6 @@ autocmd FileType javascript JsPreTmpl
 autocmd FileType javascriptreact JsPreTmpl
 autocmd FileType typescript JsPreTmpl
 
-" markdown to html
-map <F3> :%!markdown<CR>
-
 " Stop using arrow keys!
 noremap <Up> <nop>
 noremap <Down> <nop>
@@ -147,9 +138,6 @@ noremap <Left> <nop>
 noremap <Right> <nop>
 
 set cmdheight=2
-
-" Print Options
-set printoptions=header:0,syntax:n,paper:letter,formfeed:y
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -165,5 +153,10 @@ autocmd VimLeave * call system("tmux setw automatic-rename")
 
 autocmd BufRead,BufNewFile *eslintrc set filetype=json
 
+set backup
+set backupdir=~/.vim/backup
+
+highlight Comment cterm=italic gui=italic
 
 command Bacon :r! curl -s "https://baconipsum.com/api/?type=all-meat&paras=3&format=text"
+command Lemon :r! ~/bin/lemon-ipsum.js
