@@ -3,6 +3,7 @@
 	name = Kelly Joseph Price
 [push]
 	default = current
+	autoSetupRemote = true
 [core]
 	pager = less -F -X
   hooksPath = ~/.config/git/hooks'
@@ -12,6 +13,7 @@
 	enabled = true
 [diff]
 	tool = vimdiff
+	alogrithm = histogram
 [help]
 	autocorrect = 1
 [filter "lfs"]
@@ -26,3 +28,18 @@
 	helper = store
 [url "git@github.com:"]
   insteadOf = https://github.com/
+[pull]
+	ff = only
+	rebase = true
+[remote]
+	pushDefault = origin
+[advice]
+	skippedCherryPicks = false
+[init]
+	defaultBranch = main
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential

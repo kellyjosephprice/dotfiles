@@ -1,14 +1,17 @@
 # dotfiles
 
-## TODO
-
-* setup instructions
-* host-specific config
-
 ### Setup
 
-* install zsh git tmux neovim curl fzf
-* `sudo chsh -s /bin/zsh $USER`
+Install packages:
+```
+$ sudo apt install zsh git tmux neovim curl ripgrep
+```
+
+Switch to `zsh`:
+```
+$ sudo chsh -s /bin/zsh $USER
+```
+
 * setup ssh
 * * setup ssh-agent
     `ssh-add .ssh/id_rsa`
@@ -43,3 +46,7 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 tmux source ~/.tmux.conf
 ctrl+a I
 ```
+
+### TPM
+
+ctrl+a I

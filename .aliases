@@ -1,9 +1,12 @@
-alias dot='git --git-dir=$HOME/git/dotfiles --work-tree=$HOME'
+alias dot='git --git-dir=$HOME/git/dotfiles/.git --work-tree=$HOME'
 
-alias readme='cd ~/git/readme/'
-alias react='cd ~/git/readme/packages/react/'
+alias readme='cd ~/git/readme'
+alias react='cd ~/git/readme/packages/react'
 alias editor='cd ~/git/readme/packages/react/src/ui/MarkdownEditor'
-alias testme='npm run test -- --watch packages/react/src/ui/MarkdownEditor'
+alias rdmdx='cd ~/git/rdmdx'
+alias markdown='cd ~/git/markdown'
+
+alias prune-merged-branches='git branch --merged | grep -Ev "(^\*|master|main|next|dev)" | xargs git branch -d'
 
 alias plz=sudo
 alias please=sudo
@@ -11,3 +14,5 @@ alias please=sudo
 alias make="make --no-print-directory"
 
 alias tsc-diagnostics=npx tsc --diagnostics --explainFiles
+
+alias cdf='cd $(find . -type d -print | fzf)'
