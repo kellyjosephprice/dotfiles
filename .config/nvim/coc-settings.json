@@ -1,0 +1,12 @@
+{
+  "coc.preferences.formatOnSave": true,
+  "eslint.autoFixOnSave": true,
+  "snippets.extends": {
+    "javascriptreact": ["javascript"],
+    "typescript": ["javascript"]
+  },
+  "tslint.autoFixOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
+}
