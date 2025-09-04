@@ -8,6 +8,20 @@ require 'nvim-treesitter.configs'.setup {
   additional_vim_regex_highlighting = false,
 }
 
+require('lualine').setup {
+  options = {
+    theme = 'gruvbox',
+  },
+  sections = {
+    lualine_a = { 'mode' },
+    lualine_b = { 'branch', 'diagnostics' },
+    lualine_c = { 'filename' },
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = { 'location' }
+  },
+}
+
 -- npm i -g typescript typescript-language-server
 --vim.pack.add {
 --{ src = 'https://github.com/neovim/nvim-lspconfig' },
