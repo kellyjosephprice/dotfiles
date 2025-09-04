@@ -1,30 +1,16 @@
-" When started as "evim", evim.vim will already have done these settings.
-if v:progname =~? "evim"
-  finish
-endif
-
 set nocompatible
 let mapleader = ','
 
 call plug#begin('~/.vim/bundle')
 Plug 'junegunn/vim-plug'
 
-Plug 'sheerun/vimrc'
-Plug 'sheerun/vim-polyglot'
 Plug 'editorconfig/editorconfig-vim'
-
-Plug 'Quramy/vim-js-pretty-template'
 
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-vinegar'
-Plug 'junegunn/gv.vim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
-Plug 'altercation/vim-colors-solarized'
-Plug 'arcticicestudio/nord-vim'
-Plug 'ayu-theme/ayu-vim'
-Plug 'sainnhe/gruvbox-material'
-Plug 'dracula/vim'
+Plug 'luisiacc/gruvbox-baby', {'branch': 'main'}
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -104,12 +90,10 @@ nnoremap <silent> <leader>f :Rg<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <C-f> :Files<CR>
 
-Plug 'junegunn/goyo.vim'
 Plug 'git@github.com:github/copilot.vim.git'
 
 let g:copilot_no_tab_map = v:true
 inoremap <silent><expr> <S-TAB> copilot#Accept("")
-
 call plug#end()
 
 set re=0
@@ -125,11 +109,9 @@ set shiftwidth=2
 set textwidth=79
 set fo+=t
 
-call jspretmpl#register_tag('pug', 'pug')
-
-autocmd FileType javascript JsPreTmpl
-autocmd FileType javascriptreact JsPreTmpl
-autocmd FileType typescript JsPreTmpl
+"autocmd FileType javascript JsPreTmpl
+"autocmd FileType javascriptreact JsPreTmpl
+"autocmd FileType typescript JsPreTmpl
 
 " Stop using arrow keys!
 noremap <Up> <nop>
@@ -139,24 +121,14 @@ noremap <Right> <nop>
 
 set cmdheight=2
 
-" Don't use Ex mode, use Q for formatting
-map Q gq
-
-set background=dark
-let g:gruvbox_material_background = 'hard'
-let g:gruvbox_material_palette = 'original'
-colorscheme gruvbox-material
-
 " Set filename as tmux title
 autocmd BufReadPost,FileReadPost,BufNewFile,BufEnter * call system("tmux rename-window 'vim " . expand("%:t") . "'")
 autocmd VimLeave * call system("tmux setw automatic-rename")
 
-autocmd BufRead,BufNewFile *eslintrc set filetype=json
-
 set backup
 set backupdir=~/.vim/backup
 
-highlight Comment cterm=italic gui=italic
-
 command Bacon :r! curl -s "https://baconipsum.com/api/?type=all-meat&paras=3&format=text"
 command Lemon :r! ~/bin/lemon-ipsum.js
+
+lua require('init')

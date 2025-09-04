@@ -3,21 +3,24 @@
 ### Setup
 
 Install packages:
+
 ```
-$ sudo apt install zsh git tmux neovim curl ripgrep
+$ sudo apt install zsh git tmux neovim curl ripgrep fzf htop
 ```
 
 Switch to `zsh`:
+
 ```
 $ sudo chsh -s /bin/zsh $USER
 ```
 
-* setup ssh
-* * setup ssh-agent
+- setup ssh
+- - setup ssh-agent
     `ssh-add .ssh/id_rsa`
-* [set git repo](#dot)
-* [install nvim plugins](#vim-plug)
-* [install tmux plugins](#tpm)
+- [set git repo](#dot)
+- [install nvim plugins](#vim-plug)
+- [install tmux plugins](#tpm)
+- [install starship prompt](#starship)
 
 ### dot
 
@@ -50,3 +53,9 @@ ctrl+a I
 ### TPM
 
 ctrl+a I
+
+### starship
+
+```
+curl -sS https://starship.rs/install.sh | sh
+```

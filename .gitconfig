@@ -1,21 +1,13 @@
 [user]
 	email = kellyjosephprice@gmail.com
 	name = Kelly Joseph Price
-[push]
-	default = current
-	autoSetupRemote = true
 [core]
 	pager = less -F -X
   hooksPath = ~/.config/git/hooks'
 [alias]
   clean-branches = !git branch | rg -v ' (master|next)$' | grep -v '*' | xargs git branch -D
-[rerere]
-	enabled = true
 [diff]
 	tool = vimdiff
-	alogrithm = histogram
-[help]
-	autocorrect = 1
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
@@ -35,11 +27,49 @@
 	pushDefault = origin
 [advice]
 	skippedCherryPicks = false
-[init]
-	defaultBranch = main
 [credential "https://github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
+
+	# clearly makes git better
+
+[column]
+        ui = auto
+[branch]
+        sort = -committerdate
+[tag]
+        sort = version:refname
+[init]
+        defaultBranch = main
+[diff]
+        algorithm = histogram
+        colorMoved = plain
+        mnemonicPrefix = true
+        renames = true
+[push]
+        default = simple
+        autoSetupRemote = true
+        followTags = true
+[fetch]
+        prune = true
+        pruneTags = true
+        all = true
+
+# why the hell not?
+
+[help]
+        autocorrect = 5
+[commit]
+        verbose = true
+[rerere]
+        enabled = true
+        autoupdate = true
+[core]
+        excludesfile = ~/.gitignore
+[rebase]
+        autoSquash = true
+        autoStash = true
+        updateRefs = true
