@@ -38,7 +38,7 @@ inoremap <silent><expr> <TAB>
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 vmap <leader>ed  <Plug>(coc-codeaction-selected)
-nmap <leader>ed  <Plug>(coc-codeaction)
+nmap <leader>ed  <Plug>(coc-codeaction-selected)
 imap <C-l> <Plug>(coc-snippets-expand)
 vmap <C-j> <Plug>(coc-snippets-select)
 " GoTo code navigation.
@@ -88,11 +88,6 @@ Plug 'junegunn/fzf.vim'
 nnoremap <silent> <leader>f :Rg<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <C-f> :Files<CR>
-
-Plug 'git@github.com:github/copilot.vim.git'
-
-let g:copilot_no_tab_map = v:true
-inoremap <silent><expr> <S-TAB> copilot#Accept("")
 call plug#end()
 
 set re=0
