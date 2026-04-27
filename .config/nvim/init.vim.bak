@@ -124,5 +124,3 @@ set backupdir=~/.vim/backup
 
 command Bacon :r! curl -s "https://baconipsum.com/api/?type=all-meat&paras=3&format=text"
 command Lemon :r! ~/bin/lemon-ipsum.js
-
-lua require('init')

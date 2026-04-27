@@ -17,3 +17,5 @@ alias peek='peek -b ffmpeg'
 alias tsc-diagnostics=npx tsc --diagnostics --explainFiles
 
 alias ls='ls --color=auto'
+
+alias screenshot='grim -g "$(slurp)"'

@@ -12,3 +12,4 @@ eval "$(starship init zsh)"
 
 # opencode
 export PATH=/home/kelly/.opencode/bin:$PATH
+eval "$(/home/kelly/.local/bin/mise activate zsh)"
