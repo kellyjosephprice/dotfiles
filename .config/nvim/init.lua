@@ -162,6 +162,14 @@ vim.api.nvim_create_autocmd('FileType', {
   callback = function() vim.treesitter.start() end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("scss_iskeyword", { clear = true }),
+  pattern = "scss",
+  callback = function()
+    vim.opt_local.iskeyword:append("@-@")
+  end,
+})
+
 -- User Commands
 vim.api.nvim_create_user_command('Bacon', 'r! curl -s "https://baconipsum.com/api/?type=all-meat&paras=3&format=text"',
   {})
