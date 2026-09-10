@@ -4,6 +4,8 @@
   imports = [
     ./modules/shell.nix
     ./modules/git.nix
+    ./modules/tmux.nix
+    ./modules/kitty.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -39,8 +41,6 @@
 
     pkgs.discord
     pkgs.nodejs
-    pkgs.kitty
-    pkgs.tmux
     pkgs.claude-code
   ];
 
