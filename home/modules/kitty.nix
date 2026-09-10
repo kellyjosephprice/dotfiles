@@ -3,7 +3,7 @@
 {
   programs.kitty = {
     enable = true;
-    themeFile = "Gruvbox_Dark";
+    themeFile = "gruvbox-dark";
 
     font = {
       package = pkgs.commit-mono;
