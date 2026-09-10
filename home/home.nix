@@ -1,13 +1,16 @@
 { config, lib, pkgs, ... }:
 
 {
+  imports = [
+    ./modules/shell.nix
+    ./modules/git.nix
+  ];
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "kelly";
   home.homeDirectory = "/home/kelly";
   home.stateVersion = "26.05";
-
-  programs.zsh.enable = true;
 
   # Unfree packages (claude-code, discord, ...) are allowed system-wide via
   # nixpkgs.config.allowUnfree in hosts/nixos/configuration.nix. home-manager
@@ -36,7 +39,6 @@
 
     pkgs.discord
     pkgs.nodejs
-    pkgs.git
     pkgs.kitty
     pkgs.tmux
     pkgs.claude-code
