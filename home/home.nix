@@ -6,6 +6,7 @@
     ./modules/git.nix
     ./modules/tmux.nix
     ./modules/kitty.nix
+    ./modules/neovim.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -43,13 +44,6 @@
     pkgs.nodejs
     pkgs.claude-code
   ];
-
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
-  };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
