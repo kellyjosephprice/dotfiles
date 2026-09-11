@@ -7,6 +7,7 @@
     ./modules/tmux.nix
     ./modules/kitty.nix
     ./modules/neovim.nix
+    ./modules/xdg.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -43,6 +44,7 @@
     pkgs.discord
     pkgs.nodejs
     pkgs.claude-code
+    pkgs.tree
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
