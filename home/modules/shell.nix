@@ -39,6 +39,8 @@
       "tsc-diagnostics" = "npx tsc --diagnostics --explainFiles";
 
       screenshot = ''grim -g "$(slurp)"'';
+
+      "home-rebuild" = ''pushd ~/git/dotfiles && (sudo nixos-rebuild switch --flake .#ayocote); popd'';
     };
 
     # fzf, starship, and PATH/session vars are handled by their own

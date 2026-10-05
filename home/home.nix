@@ -2,11 +2,11 @@
 
 {
   imports = [
-    ./modules/shell.nix
     ./modules/git.nix
-    ./modules/tmux.nix
     ./modules/kitty.nix
     ./modules/neovim.nix
+    ./modules/shell.nix
+    ./modules/tmux.nix
     ./modules/xdg.nix
   ];
 
@@ -41,10 +41,17 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
 
-    pkgs.discord
-    pkgs.nodejs
+    pkgs.appimage-run
     pkgs.claude-code
+    pkgs.discord
+    pkgs.gimp
+    pkgs.gnumake
+    pkgs.nodejs
+    pkgs.opencode
     pkgs.tree
+    pkgs.ucblogo
+    pkgs.wesnoth
+    pkgs.wl-clipboard
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

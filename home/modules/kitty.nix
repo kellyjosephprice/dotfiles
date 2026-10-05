@@ -16,6 +16,7 @@
       bold_font = "CommitMono Bold";
       italic_font = "CommitMono Italic";
       bold_italic_font = "CommitMono Bold Italic";
+      hide_window_decorations = "yes";
     };
   };
 }

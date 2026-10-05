@@ -14,6 +14,15 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Workaround for amdgpu DMCUB display-firmware hangs on resume from
+  # suspend (seen as "flip_done timed out" freezes on this Phoenix iGPU).
+  # Disables Panel Self-Refresh, which is the common trigger.
+  boot.kernelParams = [ "amdgpu.dcdebugmask=0x10" ];
+
+  # Allow more SysRq operations (e.g. Alt+SysRq+B to reboot cleanly) as
+  # a recovery escape hatch if the display ever wedges again.
+  boot.kernel.sysctl."kernel.sysrq" = 1;
+
   networking.hostName = "ayocote"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 

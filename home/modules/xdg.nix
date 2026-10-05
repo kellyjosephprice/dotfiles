@@ -1,6 +1,17 @@
 { config, ... }:
 
 {
+  xdg.enable = true;
+
+  # GNOME auto-starts xdg-user-dirs-update on every graphical login, which
+  # clobbers home-manager's managed (read-only) user-dirs.dirs symlink with
+  # its own plain file. Disable that autostart entry via the standard
+  # freedesktop override mechanism (a same-named file with Hidden=true).
+  xdg.configFile."autostart/xdg-user-dirs.desktop".text = ''
+    [Desktop Entry]
+    Hidden=true
+  '';
+
   xdg.userDirs = let
     home = config.home.homeDirectory;
   in {
@@ -15,9 +26,6 @@
     publicShare = null;
     templates = null;
     videos = "${home}/vid";
-    extraConfig = {
-      XDG_PROJECTS_DIR = "${home}/wsp";
-      XDG_WORK_DIR = "${home}/git";
-    };
+    projects = "${home}/wsp";
   };
 }
