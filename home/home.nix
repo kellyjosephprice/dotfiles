@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./modules/chromium.nix
     ./modules/git.nix
     ./modules/kitty.nix
     ./modules/neovim.nix
@@ -42,14 +43,23 @@
     # '')
 
     pkgs.appimage-run
+    pkgs.bc
     pkgs.claude-code
     pkgs.discord
+    pkgs.dotnet-sdk
     pkgs.gimp
     pkgs.gnumake
+    pkgs.google-antigravity-cli
+    pkgs.hashlink
+    pkgs.haxe
+    pkgs.inotify-tools
     pkgs.nodejs
     pkgs.opencode
+    pkgs.prusa-slicer
+    pkgs.steam
     pkgs.tree
     pkgs.ucblogo
+    pkgs.units
     pkgs.wesnoth
     pkgs.wl-clipboard
   ];

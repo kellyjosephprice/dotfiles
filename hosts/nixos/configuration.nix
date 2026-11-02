@@ -55,6 +55,19 @@
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
 
+  hardware.graphics.enable = true;
+
+  # Nix-built apps get their OpenGL/etc RPATHs patched at build time, so they
+  # never need this. Prebuilt foreign binaries (a downloaded runtime, a
+  # NuGet-bundled native .so) don't get that treatment and fail to resolve
+  # libGL.so.1 and friends at runtime. nix-ld is the standard shim for that.
+  # Hit this with hashlink, then again with MonoGame's native dependencies.
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    libGL
+    openal
+  ];
+
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
