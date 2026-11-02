@@ -18,7 +18,7 @@
   home.stateVersion = "26.05";
 
   # Unfree packages (claude-code, discord, ...) are allowed system-wide via
-  # nixpkgs.config.allowUnfree in hosts/nixos/configuration.nix. home-manager
+  # nixpkgs.config.allowUnfree in hosts/common.nix. home-manager
   # shares that same pkgs instance (home-manager.useGlobalPkgs = true in
   # flake.nix), so no separate allowUnfreePredicate is needed here.
 
@@ -42,25 +42,14 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
 
-    pkgs.appimage-run
+    # Shared by every machine. Machine-only apps live in home/hosts/.
     pkgs.bc
     pkgs.claude-code
-    pkgs.discord
-    pkgs.dotnet-sdk
-    pkgs.gimp
     pkgs.gnumake
-    pkgs.google-antigravity-cli
-    pkgs.hashlink
-    pkgs.haxe
     pkgs.inotify-tools
     pkgs.nodejs
-    pkgs.opencode
-    pkgs.prusa-slicer
-    pkgs.steam
     pkgs.tree
-    pkgs.ucblogo
     pkgs.units
-    pkgs.wesnoth
     pkgs.wl-clipboard
   ];
 
