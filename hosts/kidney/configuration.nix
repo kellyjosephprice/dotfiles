@@ -10,19 +10,24 @@
 
   networking.hostName = "kidney";
 
+  # Same access as on Ubuntu. Docker group membership is effectively root.
+  users.users."kelly".extraGroups = [ "docker" ];
+
   # The EFI partition is shared with Ubuntu during the migration, so don't
   # let old NixOS generations fill it.
   boot.loader.systemd-boot.configurationLimit = 10;
 
   # Static address on the USB ethernet adapter. Pi-hole first; the router is
   # the fallback so this machine can still resolve names when Pi-hole is down.
+  # Matched by MAC because the adapter's name differs between distros: the enx
+  # name came from a rule Ubuntu ships and NixOS doesn't.
   networking.networkmanager.ensureProfiles.profiles.lan = {
     connection = {
       id = "lan";
       type = "ethernet";
-      interface-name = "enx00e04c050e9c";
       autoconnect = "true";
     };
+    ethernet.mac-address = "00:E0:4C:05:0E:9C";
     ipv4 = {
       method = "manual";
       address1 = "192.168.1.65/24,192.168.1.254";
