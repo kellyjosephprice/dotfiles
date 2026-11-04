@@ -22,6 +22,7 @@ in
       8001 # deCONZ web
       8123 # Home Assistant
       8443 # deCONZ websocket
+      5006 # Actual Budget
       18555 # Home Assistant go2rtc
     ];
     allowedUDPPorts = [

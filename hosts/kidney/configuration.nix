@@ -92,6 +92,7 @@
           /opt/prunez-estate \
           /opt/deconz \
           /opt/etc-pihole \
+          /opt/actual \
           /home/kelly \
           --exclude="/home/kelly/.cache" \
           --exclude="*/.cache" \
