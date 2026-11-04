@@ -10,19 +10,32 @@
     antigravity-nix.url = "github:jacopone/antigravity-nix";
   };
 
-  outputs = { self, nixpkgs, home-manager, antigravity-nix, ... }: {
-    nixosConfigurations.ayocote = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        ./hosts/nixos/configuration.nix
-        { nixpkgs.overlays = [ antigravity-nix.overlays.default ]; }
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.kelly = import ./home/home.nix;
-        }
-      ];
+  outputs = { self, nixpkgs, home-manager, antigravity-nix, ... }:
+    let
+      mkHost = { modules, home }: nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = modules ++ [
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.kelly = import home;
+          }
+        ];
+      };
+    in
+    {
+      nixosConfigurations.ayocote = mkHost {
+        modules = [
+          ./hosts/ayocote/configuration.nix
+          { nixpkgs.overlays = [ antigravity-nix.overlays.default ]; }
+        ];
+        home = ./home/hosts/ayocote.nix;
+      };
+
+      nixosConfigurations.kidney = mkHost {
+        modules = [ ./hosts/kidney/configuration.nix ];
+        home = ./home/hosts/kidney.nix;
+      };
     };
-  };
 }
