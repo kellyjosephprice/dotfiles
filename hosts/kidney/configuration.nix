@@ -48,6 +48,12 @@
   systemd.targets.hibernate.enable = false;
   systemd.targets.hybrid-sleep.enable = false;
 
+  # A systemd-managed ssh-agent, independent of any desktop login. kidney
+  # runs with no one logged into the GUI, so GNOME's own agent (the default
+  # on this shared desktop config) never starts here otherwise.
+  programs.ssh.startAgent = true;
+  services.gnome.gcr-ssh-agent.enable = false;
+
   services.openssh = {
     enable = true;
     # Matches Ubuntu today: passwords allowed, keyboard-interactive off.
