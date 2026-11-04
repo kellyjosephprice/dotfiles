@@ -63,6 +63,53 @@
   services.thermald.enable = true;
   services.fwupd.enable = true;
 
+  # Nightly encrypted backup of the house data to Google Drive. restic does
+  # the encryption and dedup; rclone is how it talks to Drive. The repo
+  # password lives in ~/.config/kidney-backup/restic-password (not in this
+  # repo), and rclone's own Drive login lives in ~/.config/rclone/rclone.conf
+  # — both are set up by hand on kidney, not managed here.
+  environment.systemPackages = with pkgs; [ restic rclone ];
+
+  systemd.services.kidney-backup = {
+    description = "Encrypted backup of house data to Google Drive";
+    after = [ "network-online.target" ];
+    wants = [ "network-online.target" ];
+    path = [ pkgs.restic pkgs.rclone ];
+    environment = {
+      RESTIC_REPOSITORY = "rclone:gdrive:kidney-backups";
+      RESTIC_PASSWORD_FILE = "/home/kelly/.config/kidney-backup/restic-password";
+    };
+    serviceConfig = {
+      Type = "oneshot";
+      User = "kelly";
+      # Home Assistant's auth DB and Cloud credentials are root-only (600).
+      # This lets the backup read any file without needing full root.
+      AmbientCapabilities = [ "CAP_DAC_READ_SEARCH" ];
+      CapabilityBoundingSet = [ "CAP_DAC_READ_SEARCH" ];
+      ExecStart = pkgs.writeShellScript "kidney-backup" ''
+        set -euo pipefail
+        restic backup \
+          /opt/prunez-estate \
+          /opt/deconz \
+          /opt/etc-pihole \
+          /home/kelly \
+          --exclude="/home/kelly/.cache" \
+          --exclude="*/.cache" \
+          --exclude="/home/kelly/.local/share/Trash"
+        restic forget --keep-daily 7 --keep-weekly 4 --keep-monthly 6 --prune
+      '';
+    };
+  };
+
+  systemd.timers.kidney-backup = {
+    description = "Run kidney-backup nightly";
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "03:00";
+      Persistent = true;
+    };
+  };
+
   # First boot finds files from Ubuntu in the home folder. Keep them with
   # this suffix instead of failing activation.
   home-manager.backupFileExtension = "ubuntu-bak";
