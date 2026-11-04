@@ -63,6 +63,20 @@
   services.thermald.enable = true;
   services.fwupd.enable = true;
 
+  # Remote access without exposing anything to the internet, and lets
+  # kidney act as an exit node for phones/laptops when they want home's
+  # network (and Pi-hole's ad-blocking) while out. Joining the tailnet and
+  # requesting exit-node status still needs `sudo tailscale up
+  # --advertise-exit-node` by hand once.
+  services.tailscale.enable = true;
+  boot.kernel.sysctl = {
+    "net.ipv4.ip_forward" = 1;
+    "net.ipv6.conf.all.forwarding" = 1;
+  };
+  # Tailscale authenticates and encrypts its own traffic, so trust it like
+  # a VPN interface rather than filtering it port-by-port.
+  networking.firewall.trustedInterfaces = [ "tailscale0" ];
+
   # Nightly encrypted backup of the house data to Google Drive. restic does
   # the encryption and dedup; rclone is how it talks to Drive. The repo
   # password lives in ~/.config/kidney-backup/restic-password (not in this
