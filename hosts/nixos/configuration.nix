@@ -134,6 +134,9 @@
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
+  # Tailscale VPN daemon + CLI.
+  services.tailscale.enable = true;
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
