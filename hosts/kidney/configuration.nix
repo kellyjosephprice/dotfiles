@@ -56,8 +56,10 @@
 
   services.openssh = {
     enable = true;
-    # Matches Ubuntu today: passwords allowed, keyboard-interactive off.
+    # Key-only. Authorized keys already cover normal logins (kelly@rio-zape,
+    # kelly@nixos) — password auth was just an unused fallback.
     settings.KbdInteractiveAuthentication = false;
+    settings.PasswordAuthentication = false;
   };
 
   services.thermald.enable = true;
