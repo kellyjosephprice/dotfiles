@@ -126,6 +126,48 @@
     };
   };
 
+  # Weekly rebuild from whatever's currently pushed to the dotfiles repo —
+  # picks up security patches already in the pinned nixpkgs version. This
+  # does NOT bump flake.lock to newer nixpkgs itself; that's a separate,
+  # deliberate step (reviewed before pushing), not unattended.
+  system.autoUpgrade = {
+    enable = true;
+    flake = "github:kellyjosephprice/dotfiles#kidney";
+    dates = "Mon 04:00";
+    randomizedDelaySec = "45min";
+    allowReboot = false;
+  };
+
+  # Weekly image refresh for the house containers (all on :latest/:stable
+  # tags already). After the nightly backup, so there's always a fresh
+  # one before an update lands.
+  systemd.services.prunez-estate-update = {
+    description = "Pull and apply the latest house container images";
+    after = [ "network-online.target" "docker.service" ];
+    wants = [ "network-online.target" ];
+    requires = [ "docker.service" ];
+    serviceConfig = {
+      Type = "oneshot";
+      User = "kelly";
+      WorkingDirectory = "/home/kelly/git/prunez-estate";
+      ExecStart = pkgs.writeShellScript "prunez-estate-update" ''
+        set -euo pipefail
+        ${config.virtualisation.docker.package}/bin/docker compose pull
+        ${config.virtualisation.docker.package}/bin/docker compose up -d
+      '';
+      TimeoutStartSec = "15min";
+    };
+  };
+
+  systemd.timers.prunez-estate-update = {
+    description = "Run prunez-estate-update weekly";
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "Mon 03:30";
+      Persistent = true;
+    };
+  };
+
   # First boot finds files from Ubuntu in the home folder. Keep them with
   # this suffix instead of failing activation.
   home-manager.backupFileExtension = "ubuntu-bak";
