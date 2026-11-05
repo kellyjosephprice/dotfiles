@@ -23,6 +23,7 @@ in
       8123 # Home Assistant
       8443 # deCONZ websocket
       5006 # Actual Budget
+      8222 # Vaultwarden
       18555 # Home Assistant go2rtc
     ];
     allowedUDPPorts = [

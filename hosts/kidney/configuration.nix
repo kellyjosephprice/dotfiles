@@ -108,6 +108,7 @@
           /opt/deconz \
           /opt/etc-pihole \
           /opt/actual \
+          /opt/vaultwarden \
           /home/kelly \
           --exclude="/home/kelly/.cache" \
           --exclude="*/.cache" \
