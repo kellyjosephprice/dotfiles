@@ -25,6 +25,7 @@ in
       5006 # Actual Budget
       8222 # Vaultwarden
       18555 # Home Assistant go2rtc
+      445 # Samba
     ];
     allowedUDPPorts = [
       53 # Pi-hole DNS
@@ -33,6 +34,32 @@ in
       1900 # Home Assistant SSDP discovery
       5353 # Home Assistant mDNS discovery
     ];
+  };
+
+  # General-purpose file share, LAN + Tailscale. Just a plain folder, not
+  # tied to any of the house services' own data. Auth is a dedicated Samba
+  # password for kelly (set with `smbpasswd -a kelly`, not managed here —
+  # Samba keeps its own password database, separate from the login password).
+  services.samba = {
+    enable = true;
+    settings = {
+      global = {
+        "workgroup" = "WORKGROUP";
+        "server string" = "kidney";
+        "netbios name" = "kidney";
+        "security" = "user";
+        "map to guest" = "never";
+      };
+      "prunez-estate" = {
+        "path" = "/opt/samba-share";
+        "browseable" = "yes";
+        "read only" = "no";
+        "guest ok" = "no";
+        "valid users" = "kelly";
+        "force user" = "kelly";
+        "force group" = "users";
+      };
+    };
   };
 
   # Compose brings the containers up at boot. Their restart policies keep

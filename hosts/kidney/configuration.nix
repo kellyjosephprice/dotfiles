@@ -109,6 +109,7 @@
           /opt/etc-pihole \
           /opt/actual \
           /opt/vaultwarden \
+          /opt/samba-share \
           /home/kelly \
           --exclude="/home/kelly/.cache" \
           --exclude="*/.cache" \
