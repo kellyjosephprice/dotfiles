@@ -8,9 +8,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     antigravity-nix.url = "github:jacopone/antigravity-nix";
+    binder-wave = {
+      url = "github:kellyjosephprice/binder-wave";
+      flake = false;
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, antigravity-nix, ... }:
+  outputs = { self, nixpkgs, home-manager, antigravity-nix, binder-wave, ... }:
     let
       mkHost = { modules, home }: nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -19,6 +23,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = { inherit binder-wave; };
             home-manager.users.kelly = import home;
           }
         ];

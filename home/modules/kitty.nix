@@ -1,9 +1,8 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, binder-wave, ... }:
 
 {
   programs.kitty = {
     enable = true;
-    themeFile = "gruvbox-dark";
 
     font = {
       package = pkgs.commit-mono;
@@ -18,5 +17,7 @@
       bold_italic_font = "CommitMono Bold Italic";
       hide_window_decorations = "yes";
     };
+
+    extraConfig = builtins.readFile "${binder-wave}/plugins/kitty/binder-wave.conf";
   };
 }

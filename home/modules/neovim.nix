@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, binder-wave, ... }:
 
 let
   # nvim-treesitter's new (0.9+) API expects parsers to already be present
@@ -34,7 +34,6 @@ in
       vim-gitgutter
       vim-fugitive
       treesitterWithGrammars
-      gruvbox-baby
       lualine-nvim
       nvim-web-devicons
       coc-nvim
@@ -169,7 +168,7 @@ in
 
       require('lualine').setup {
         options = {
-          theme = "gruvbox-baby"
+          theme = dofile("${binder-wave}/plugins/nvim/lualine/binder-wave.lua")
         },
         sections = {
           lualine_a = { 'mode' },
@@ -182,7 +181,7 @@ in
       }
 
       vim.cmd.set('background=dark')
-      vim.cmd.colorscheme("gruvbox-baby")
+      vim.cmd.colorscheme("binder-wave")
 
       -- Parsers are bundled via nix (see treesitterWithGrammars above) -
       -- just turn highlighting on for these filetypes.
@@ -210,5 +209,9 @@ in
   home.file = {
     ".config/nvim/coc-settings.json".source = ../../.config/nvim/coc-settings.json;
     ".config/nvim/after/ftplugin/markdown_wrapping.vim".source = ../../.config/nvim/after/ftplugin/markdown_wrapping.vim;
+    # colorscheme (not a vim plugin package) -- "colors" is on nvim's
+    # runtimepath by default under ~/.config/nvim, so this alone makes
+    # `:colorscheme binder-wave` resolve.
+    ".config/nvim/colors/binder-wave.lua".source = "${binder-wave}/plugins/nvim/colors/binder-wave.lua";
   };
 }

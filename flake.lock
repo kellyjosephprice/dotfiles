@@ -19,6 +19,22 @@
         "type": "github"
       }
     },
+    "binder-wave": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1795034109,
+        "narHash": "sha256-zJ/KDPjUfNWtfBrwXXeIAd+uBctqw7oGHBnzv3FVsAY=",
+        "owner": "kellyjosephprice",
+        "repo": "binder-wave",
+        "rev": "3c6ebdcadd9a4d9fd6dcff8917f581a82ce6e90d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kellyjosephprice",
+        "repo": "binder-wave",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -93,6 +109,7 @@
     "root": {
       "inputs": {
         "antigravity-nix": "antigravity-nix",
+        "binder-wave": "binder-wave",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_2"
       }

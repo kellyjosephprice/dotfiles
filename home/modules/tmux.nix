@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, binder-wave, ... }:
 
 {
   programs.tmux = {
@@ -11,20 +11,11 @@
 
     plugins = with pkgs.tmuxPlugins; [
       sensible
-      {
-        # the .gitmodules/README reference to a "tmux-themepack" fork is
-        # stale - the actual .tmux.conf used egel/tmux-gruvbox instead,
-        # which is what nixpkgs' tmuxPlugins.gruvbox packages
-        plugin = gruvbox;
-        extraConfig = ''
-          set -g @tmux-gruvbox 'dark256'
-          set -g @tmux-gruvbox-right-status-x ' '
-          set -g @tmux-gruvbox-right-status-y ' '
-        '';
-      }
     ];
 
     extraConfig = ''
+      source-file ${binder-wave}/plugins/tmux/binder-wave.tmux.conf
+
       bind-key P command-prompt -p 'save history to filename:' -I '~/tmux.history' 'capture-pane -S -32768 ; save-buffer %1 ; delete-buffer'
 
       set -ag terminal-overrides ",xterm-256color:RGB"
