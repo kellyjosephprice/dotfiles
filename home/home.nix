@@ -44,6 +44,7 @@
 
     # Shared by every machine. Machine-only apps live in home/hosts/.
     pkgs.bc
+    pkgs.bitwarden-cli
     pkgs.claude-code
     pkgs.gnomeExtensions.tailscale-status
     pkgs.gnumake

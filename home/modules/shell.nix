@@ -66,7 +66,7 @@
     defaultOptions = [
       "--height 40%"
       "--layout=reverse"
-      "--preview \"head -100 {}\""
+      "--preview 'head -100 {}'"
     ];
   };
 

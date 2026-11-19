@@ -22,11 +22,11 @@
     "binder-wave": {
       "flake": false,
       "locked": {
-        "lastModified": 1795034109,
-        "narHash": "sha256-zJ/KDPjUfNWtfBrwXXeIAd+uBctqw7oGHBnzv3FVsAY=",
+        "lastModified": 1795052670,
+        "narHash": "sha256-FFi18tNXNi18s5lx5gd4XGsgc5k/Qvni7G0S4nhENag=",
         "owner": "kellyjosephprice",
         "repo": "binder-wave",
-        "rev": "3c6ebdcadd9a4d9fd6dcff8917f581a82ce6e90d",
+        "rev": "4d1c96f7c19ce91c4fce91f4a8f3e6588cb88ad0",
         "type": "github"
       },
       "original": {
